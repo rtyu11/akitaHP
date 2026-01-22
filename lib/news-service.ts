@@ -1,4 +1,4 @@
-import prisma from './prisma';
+import { getPrismaClient, hasPrismaClient } from './prisma';
 
 export interface NewsItem {
     id: string;
@@ -29,8 +29,13 @@ const MOCK_NEWS: NewsItem[] = [
 ];
 
 export async function getNews(): Promise<NewsItem[]> {
+    if (!hasPrismaClient()) {
+        return MOCK_NEWS;
+    }
+
     try {
         // Attempt to fetch from DB
+        const prisma = getPrismaClient();
         const news = await prisma.news.findMany({
             orderBy: { publishedAt: 'desc' },
             take: 3
@@ -43,7 +48,12 @@ export async function getNews(): Promise<NewsItem[]> {
 }
 
 export async function createNews(title: string, content: string) {
+    if (!hasPrismaClient()) {
+        throw new Error('Database is not configured.');
+    }
+
     try {
+        const prisma = getPrismaClient();
         return await prisma.news.create({
             data: {
                 title,
@@ -56,7 +66,12 @@ export async function createNews(title: string, content: string) {
 }
 
 export async function deleteNews(id: string) {
+    if (!hasPrismaClient()) {
+        throw new Error('Database is not configured.');
+    }
+
     try {
+        const prisma = getPrismaClient();
         return await prisma.news.delete({
             where: { id }
         });
