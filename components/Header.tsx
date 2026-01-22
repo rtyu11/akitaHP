@@ -1,8 +1,5 @@
 import Link from 'next/link';
 import { Phone, Menu } from 'lucide-react';
-import { Button } from '@/components/ui/button'; // I'll need to create this or just use standard button
-// Actually I'll use standard HTML button for now or a simple component inline to save time if I don't have shadcn setup.
-// I'll stick to standard tailwind classes.
 
 export default function Header() {
     return (
