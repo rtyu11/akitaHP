@@ -13,7 +13,7 @@ export default function Recruit() {
                     <h2 className="text-3xl font-bold mb-4">採用情報</h2>
                     <div className="w-20 h-1 bg-brand-green mx-auto rounded-full" />
                     <p className="mt-4 text-gray-300 text-lg">
-                        "自然豊かな西多摩で、ゆったりとした雰囲気の中、<br className="hidden md:inline" />健康的に働きませんか？"
+                        &quot;自然豊かな西多摩で、ゆったりとした雰囲気の中、<br className="hidden md:inline" />健康的に働きませんか？&quot;
                     </p>
                 </div>
 

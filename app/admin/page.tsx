@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { getNews } from '@/lib/news-service';
 import { addNewsAction, deleteNewsAction } from '@/lib/actions';
 
@@ -8,9 +9,9 @@ export default async function AdminDashboard() {
         <div className="min-h-screen bg-gray-50 p-4 md:p-8">
             <header className="flex justify-between items-center mb-8 bg-white p-4 rounded-lg shadow-sm">
                 <h1 className="text-2xl font-bold text-gray-800">管理ダッシュボード</h1>
-                <a href="/api/auth/signout" className="text-sm text-red-600 hover:text-red-800 hover:underline font-bold">
+                <Link href="/api/auth/signout" className="text-sm text-red-600 hover:text-red-800 hover:underline font-bold" prefetch={false}>
                     ログアウト
-                </a>
+                </Link>
             </header>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">

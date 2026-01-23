@@ -1,0 +1,21 @@
+
+> web@0.1.0 lint
+> eslint
+
+
+D:\githubフォルダ\秋多運送HP\app\admin\page.tsx
+  11:17  error  Do not use an `<a>` element to navigate to `/api/auth/signout/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
+
+D:\githubフォルダ\秋多運送HP\components\About.tsx
+  1:26  warning  'MapPin' is defined but never used  @typescript-eslint/no-unused-vars
+
+D:\githubフォルダ\秋多運送HP\components\Contact.tsx
+  1:17  warning  'Mail' is defined but never used    @typescript-eslint/no-unused-vars
+  1:23  warning  'MapPin' is defined but never used  @typescript-eslint/no-unused-vars
+
+D:\githubフォルダ\秋多運送HP\components\Recruit.tsx
+  16:25  error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  16:95  error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+✖ 6 problems (3 errors, 3 warnings)
+

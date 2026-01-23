@@ -5,12 +5,8 @@ const databaseUrl =
     process.env.POSTGRES_URL_NON_POOLING ??
     process.env.DATABASE_URL;
 
-const createPrismaClient = (url: string) =>
-    new PrismaClient({
-        datasources: {
-            db: { url },
-        },
-    });
+const createPrismaClient = () =>
+    new PrismaClient();
 
 declare global {
     var prismaGlobal: PrismaClient | undefined;
@@ -20,10 +16,12 @@ let prisma: PrismaClient | undefined;
 
 if (databaseUrl) {
     if (process.env.NODE_ENV === 'production') {
-        prisma = createPrismaClient(databaseUrl);
+        prisma = createPrismaClient();
     } else {
-        prisma = globalThis.prismaGlobal ?? createPrismaClient(databaseUrl);
-        globalThis.prismaGlobal = prisma;
+        if (!globalThis.prismaGlobal) {
+            globalThis.prismaGlobal = createPrismaClient();
+        }
+        prisma = globalThis.prismaGlobal;
     }
 }
 
