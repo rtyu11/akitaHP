@@ -1,11 +1,11 @@
-import Hero from '@/components/Hero';
-import About from '@/components/About';
-import Services from '@/components/Services';
-import Recruit from '@/components/Recruit';
-import NewsSection from '@/components/NewsSection';
-import Contact from '@/components/Contact';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
+import Hero from "@/components/Hero";
+import Recruit from "@/components/Recruit";
+import NewsSection from "@/components/NewsSection";
+import Contact from "@/components/Contact";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import CompanyInfo from "@/components/CompanyInfo";
+import Vehicles from "@/components/Vehicles";
 
 export default function Home() {
   return (
@@ -13,8 +13,8 @@ export default function Home() {
       <Header />
       <Hero />
       <NewsSection />
-      <About />
-      <Services />
+      <CompanyInfo />
+      <Vehicles />
       <Recruit />
       <Contact />
       <Footer />
