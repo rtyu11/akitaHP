@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, observerOptions);
 
     // Add animation classes to elements
-    const animatedElements = document.querySelectorAll('.section-title, .card, .about-text, .recruit-info, .safety-content h2, .safety-content p, .safety-list li');
+    const animatedElements = document.querySelectorAll('.section-title, .card, .about-image, .about-text, .recruit-image, .recruit-info, .safety-content h2, .safety-content p, .safety-list li');
     animatedElements.forEach(el => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(20px)';
