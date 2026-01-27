@@ -901,7 +901,7 @@ a {
     box-shadow: var(--shadow-hover);
     border-radius: 4px;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     overflow: hidden;
 }
 
