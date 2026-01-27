@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 loader.style.display = 'none';
             }, 500);
-        }, 1000); // Simulate a bit of loading for effect
+        }, 1500); // Slightly longer for premium feel
     });
 
     // Sticky Navbar
@@ -26,26 +26,28 @@ document.addEventListener('DOMContentLoaded', () => {
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
 
-    hamburger.addEventListener('click', () => {
-        navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-        hamburger.classList.toggle('active');
+    if (hamburger) {
+        hamburger.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            hamburger.classList.toggle('active');
 
-        // Simple mobile menu styling override (inline for simplicity in this logic)
-        if (navLinks.style.display === 'flex') {
-            navLinks.style.flexDirection = 'column';
-            navLinks.style.position = 'absolute';
-            navLinks.style.top = '100%';
-            navLinks.style.left = '0';
-            navLinks.style.width = '100%';
-            navLinks.style.background = 'rgba(15, 23, 42, 0.98)';
-            navLinks.style.padding = '2rem';
-            navLinks.style.textAlign = 'center';
-        } else {
-            navLinks.style = ''; // Reset
-        }
-    });
+            if (navLinks.style.display === 'flex') {
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '100%';
+                navLinks.style.left = '0';
+                navLinks.style.width = '100%';
+                navLinks.style.background = 'rgba(255, 255, 255, 0.98)';
+                navLinks.style.padding = '2rem';
+                navLinks.style.textAlign = 'center';
+                navLinks.style.boxShadow = '0 4px 6px rgba(0,0,0,0.1)';
+            } else {
+                navLinks.style = '';
+            }
+        });
+    }
 
-    // Smooth Scrolling for Anchors
+    // Smooth Scrolling
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -54,8 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 target.scrollIntoView({
                     behavior: 'smooth'
                 });
-                // Close mobile menu if open
-                if (window.innerWidth <= 768) {
+                if (window.innerWidth <= 768 && navLinks) {
                     navLinks.style.display = 'none';
                 }
             }
@@ -64,101 +65,86 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Intersection Observer for Animations
     const observerOptions = {
-        threshold: 0.1,
+        threshold: 0.15,
         rootMargin: "0px"
     };
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('animate-up');
+                entry.target.classList.add('animate-active');
                 observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
 
-    // Add animation classes to elements
-    const animatedElements = document.querySelectorAll('.section-title, .card, .about-image, .about-text, .recruit-image, .recruit-info, .safety-content h2, .safety-content p, .safety-list li');
-    animatedElements.forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(20px)';
-        el.style.transition = 'all 0.6s ease-out';
-        observer.observe(el);
+    // Targets for animation
+    const targets = [
+        '.section-title',
+        '.section-desc',
+        '.about-content',
+        '.about-img-group',
+        '.fleet-card',
+        '.feature-box',
+        '.safety-title',
+        '.safety-text',
+        '.safety-point',
+        '.recruit-card',
+        '.contact-wrapper'
+    ];
+
+    targets.forEach(selector => {
+        document.querySelectorAll(selector).forEach((el, index) => {
+            el.classList.add('animate-init');
+            // Stagger delay for grids
+            if (el.classList.contains('fleet-card') || el.classList.contains('feature-box') || el.classList.contains('safety-point')) {
+                el.style.transitionDelay = `${index % 3 * 0.1}s`;
+            }
+            observer.observe(el);
+        });
     });
 
-    // Add specific animation class style dynamically
+    // Dynamic Style for Animation
     const styleSheet = document.createElement("style");
     styleSheet.innerText = `
-        .animate-up {
+        .animate-init {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .animate-active {
             opacity: 1 !important;
             transform: translateY(0) !important;
         }
     `;
     document.head.appendChild(styleSheet);
 
-    // Contact Form Submission (GAS)
+    // Form Handling (Visual Only for now)
     const form = document.getElementById('contactForm');
-    const formStatus = document.getElementById('formStatus');
+    if (form) {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = form.querySelector('.btn-submit');
+            const originalText = btn.innerText;
 
-    // ★ REPLACE THIS URL WITH YOUR GOOGLE APPS SCRIPT URL ★
-    const SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE';
+            btn.innerText = '送信中...';
+            btn.disabled = true;
+            btn.style.opacity = '0.7';
 
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-
-        // Basic Validation
-        const formData = new FormData(form);
-        const data = {};
-        formData.forEach((value, key) => {
-            data[key] = value;
-        });
-
-        // UI Feedback
-        const submitBtn = form.querySelector('.btn-submit');
-        const originalBtnText = submitBtn.innerHTML;
-        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 送信中...';
-        submitBtn.disabled = true;
-        formStatus.textContent = '';
-        formStatus.style.color = 'inherit';
-
-        // NOTE: If you haven't deployed the script yet, this will fail or log to console.
-        // For local testing without a real backend, we simulate success if URL is placeholder.
-        if (SCRIPT_URL.includes('YOUR_GOOGLE_APPS_SCRIPT')) {
             setTimeout(() => {
-                showSuccess();
-                console.warn('Form submitted in demo mode. Set SCRIPT_URL to real endpoint.');
+                btn.innerText = '送信完了';
+                btn.style.background = '#10b981';
+                document.getElementById('formStatus').innerText = 'お問い合わせありがとうございます。';
+                document.getElementById('formStatus').style.color = '#10b981';
+                form.reset();
+
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                    btn.disabled = false;
+                    btn.style.background = '';
+                    btn.style.opacity = '1';
+                }, 3000);
             }, 1500);
-            return;
-        }
-
-        fetch(SCRIPT_URL, {
-            method: 'POST',
-            body: JSON.stringify(data),
-            mode: 'no-cors', // Important for GAS
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-            .then(() => {
-                showSuccess();
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                formStatus.textContent = '送信に失敗しました。時間をおいて再度お試しください。';
-                formStatus.style.color = '#ef4444';
-                resetBtn();
-            });
-
-        function showSuccess() {
-            formStatus.textContent = 'お問い合わせありがとうございます。送信が完了しました。';
-            formStatus.style.color = '#10b981'; // Green
-            form.reset();
-            resetBtn();
-        }
-
-        function resetBtn() {
-            submitBtn.innerHTML = originalBtnText;
-            submitBtn.disabled = false;
-        }
-    });
+        });
+    }
 });
