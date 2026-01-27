@@ -913,6 +913,71 @@ img {
     }
 }
 
+/* Well-being */
+.well-being {
+    background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.wellness-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.wellness-text h3 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+}
+
+.wellness-card-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+.wellness-card {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+    border-left: 5px solid #f97316;
+    /* Orange 500 */
+    position: relative;
+    overflow: hidden;
+}
+
+.wellness-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, transparent 50%, rgba(249, 115, 22, 0.1) 50%);
+}
+
+.wellness-card:hover {
+    transform: translateX(10px);
+    box-shadow: var(--shadow-lg);
+}
+
+.wellness-icon {
+    font-size: 2rem;
+    color: #f97316;
+    margin-bottom: 1rem;
+}
+
+.wellness-card h4 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: var(--secondary-color);
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
     .hero-title {
