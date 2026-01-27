@@ -829,7 +829,8 @@ a {
 .safety-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to bottom, rgba(15, 23, 42, 0.95), rgba(127, 29, 29, 0.9));
+    background: rgba(15, 23, 42, 0.85);
+    /* Neutral dark blue/slate overlay */
 }
 
 .safety-container {
@@ -1263,9 +1264,48 @@ a {
     .recruit-img-side {
         min-height: 300px;
     }
+
+    .wellness-wrapper {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media (max-width: 768px) {
+    .section {
+        padding: 6rem 0;
+    }
+
+    .section-header {
+        margin-bottom: 3rem;
+    }
+
+    .section-title {
+        font-size: 2.5rem;
+    }
+
+    .contact-wrapper {
+        padding: 2rem 1.5rem;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .hero-title {
+        font-size: 2.8rem;
+    }
+
+    .btn-primary {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .features-grid,
+    .safety-grid {
+        grid-template-columns: 1fr;
+    }
+
     .nav-links {
         display: none;
     }
