@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 loader.style.display = 'none';
             }, 500);
-        }, 1500); // Slightly longer for premium feel
+        }, 800);
     });
 
     // Sticky Navbar
@@ -63,63 +63,83 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Intersection Observer for Animations
+    // Intersection Observer for Scroll Animations
     const observerOptions = {
         threshold: 0.15,
-        rootMargin: "0px"
+        rootMargin: "0px 0px -50px 0px"
     };
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('animate-active');
+                entry.target.classList.add('is-visible');
+
+                // Trigger counter animation if it's a number element
+                if (entry.target.classList.contains('stat-num') || entry.target.classList.contains('count')) {
+                    animateValue(entry.target);
+                }
+
                 observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
 
-    // Targets for animation
-    const targets = [
-        '.section-title',
-        '.section-desc',
-        '.about-content',
-        '.about-img-group',
-        '.fleet-card',
-        '.feature-box',
-        '.safety-title',
-        '.safety-text',
-        '.safety-point',
-        '.recruit-card',
-        '.contact-wrapper'
-    ];
+    // Targets to animate on scroll
+    const targets = document.querySelectorAll('.animate-on-scroll, .section-title, .section-desc, .stat-num, .fleet-card, .feature-box, .wellness-card, .recruit-content');
 
-    targets.forEach(selector => {
-        document.querySelectorAll(selector).forEach((el, index) => {
-            el.classList.add('animate-init');
-            // Stagger delay for grids
-            if (el.classList.contains('fleet-card') || el.classList.contains('feature-box') || el.classList.contains('safety-point')) {
-                el.style.transitionDelay = `${index % 3 * 0.1}s`;
-            }
-            observer.observe(el);
-        });
+    targets.forEach((el, index) => {
+        // Add base class if not present
+        if (!el.classList.contains('animate-on-scroll')) {
+            el.classList.add('animate-on-scroll');
+        }
+
+        // Stagger animations for grid items
+        if (el.classList.contains('fleet-card')) {
+            el.style.transitionDelay = `${(index % 4) * 0.1}s`;
+        } else if (el.classList.contains('feature-box') || el.classList.contains('wellness-card')) {
+            el.style.transitionDelay = `${(index % 3) * 0.1}s`;
+        }
+
+        observer.observe(el);
     });
 
-    // Dynamic Style for Animation
-    const styleSheet = document.createElement("style");
-    styleSheet.innerText = `
-        .animate-init {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .animate-active {
-            opacity: 1 !important;
-            transform: translateY(0) !important;
-        }
-    `;
-    document.head.appendChild(styleSheet);
+    // Number Counter Animation Function
+    function animateValue(obj) {
+        let text = obj.innerText;
+        // Extract number and suffix (like '+', '台')
+        let value = parseInt(text.replace(/[^0-9]/g, ''));
+        let suffix = text.replace(/[0-9]/g, '');
 
-    // Form Handling (Visual Only for now)
+        if (isNaN(value)) return;
+
+        let startTimestamp = null;
+        const duration = 2000;
+
+        const step = (timestamp) => {
+            if (!startTimestamp) startTimestamp = timestamp;
+            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+            // Easing function
+            const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+
+            obj.innerText = Math.floor(easeOutQuart * value) + suffix;
+
+            if (progress < 1) {
+                window.requestAnimationFrame(step);
+            }
+        };
+        window.requestAnimationFrame(step);
+    }
+
+    // Parallax Effect for Hero
+    const heroBg = document.querySelector('.hero-bg-img');
+    if (heroBg) {
+        window.addEventListener('scroll', () => {
+            const scrollValue = window.scrollY;
+            heroBg.style.transform = `scale(1.1) translateY(${scrollValue * 0.3}px)`;
+        });
+    }
+
+    // Form Handling (Visual Only)
     const form = document.getElementById('contactForm');
     if (form) {
         form.addEventListener('submit', (e) => {
@@ -133,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             setTimeout(() => {
                 btn.innerText = '送信完了';
-                btn.style.background = '#10b981';
+                btn.style.background = '#10b981'; // Green
                 document.getElementById('formStatus').innerText = 'お問い合わせありがとうございます。';
                 document.getElementById('formStatus').style.color = '#10b981';
                 form.reset();
