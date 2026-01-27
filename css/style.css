@@ -446,9 +446,8 @@ a {
 .hero-overlay {
     position: absolute;
     inset: 0;
-    /* Dramatic Red Multiply Effect */
-    background: linear-gradient(120deg, rgba(213, 0, 0, 0.9), rgba(0, 0, 0, 0.5));
-    mix-blend-mode: multiply;
+    /* Removed Red Multiply Effect */
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3));
     z-index: 1;
 }
 
@@ -737,7 +736,7 @@ a {
     left: 0;
     width: 100%;
     padding: 1.5rem;
-    background: linear-gradient(to top, var(--primary-color), transparent);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
     color: var(--white);
     transform: translateY(100%);
     transition: 0.4s;
@@ -968,8 +967,8 @@ a {
     content: '';
     position: absolute;
     inset: 0;
-    background: rgba(213, 0, 0, 0.3);
-    mix-blend-mode: multiply;
+    background: rgba(0, 0, 0, 0.2);
+    /* Neutral dark overlay instead of red */
 }
 
 .recruit-overlay {
