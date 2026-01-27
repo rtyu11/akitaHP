@@ -596,38 +596,20 @@ img {
     position: relative;
     z-index: 10;
     text-align: center;
-    max-width: 800px;
 }
 
 .safety-content h2 {
     font-size: 3rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
+    margin-top: 0.5rem;
 }
 
-.safety-content p {
+.safety-text-wrapper p {
     font-size: 1.1rem;
-    margin-bottom: 3rem;
     color: #e2e8f0;
 }
 
-.safety-list {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    flex-wrap: wrap;
-}
 
-.safety-list li {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 1.1rem;
-    font-weight: 500;
-}
-
-.safety-list i {
-    color: var(--accent-color);
-}
 
 /* Recruit */
 .recruit-wrapper {
