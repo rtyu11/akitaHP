@@ -118,8 +118,15 @@ a {
 }
 
 @keyframes tagPulse {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(196, 30, 58, 0.1); }
-    50% { box-shadow: 0 0 20px 5px rgba(196, 30, 58, 0.15); }
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(196, 30, 58, 0.1);
+    }
+
+    50% {
+        box-shadow: 0 0 20px 5px rgba(196, 30, 58, 0.15);
+    }
 }
 
 .section-tag::before,
@@ -145,8 +152,13 @@ a {
 }
 
 @keyframes shimmer {
-    0% { background-position: 0% center; }
-    100% { background-position: 200% center; }
+    0% {
+        background-position: 0% center;
+    }
+
+    100% {
+        background-position: 200% center;
+    }
 }
 
 .section-desc {
@@ -370,6 +382,7 @@ a {
         opacity: 0;
         transform: translateY(30px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -401,8 +414,15 @@ a {
 }
 
 @keyframes lineExpand {
-    from { width: 0; opacity: 0; }
-    to { width: 60px; opacity: 1; }
+    from {
+        width: 0;
+        opacity: 0;
+    }
+
+    to {
+        width: 60px;
+        opacity: 1;
+    }
 }
 
 .hero-bg-wrapper {
@@ -443,8 +463,15 @@ a {
 }
 
 @keyframes heroImageScale {
-    from { transform: scale(1.1); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
+    from {
+        transform: scale(1.1);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
 .hero-overlay {
@@ -473,8 +500,15 @@ a {
 }
 
 @keyframes scrollBounce {
-    0%, 100% { transform: translateX(-50%) translateY(0); }
-    50% { transform: translateX(-50%) translateY(-8px); }
+
+    0%,
+    100% {
+        transform: translateX(-50%) translateY(0);
+    }
+
+    50% {
+        transform: translateX(-50%) translateY(-8px);
+    }
 }
 
 .scroll-text {
@@ -606,7 +640,7 @@ a {
     box-shadow: var(--shadow-hover);
 }
 
-.stat-item > * {
+.stat-item>* {
     position: relative;
     z-index: 1;
 }
@@ -797,7 +831,7 @@ a {
     box-shadow: var(--shadow-hover);
 }
 
-.feature-box > * {
+.feature-box>* {
     position: relative;
     z-index: 1;
 }
@@ -857,8 +891,13 @@ a {
 }
 
 @keyframes rotateBg {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 .safety-overlay {
@@ -1557,6 +1596,38 @@ textarea.form-control {
     width: 100%;
 }
 
+.footer-social {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-top: 0.5rem;
+    /* modest spacing on mobile */
+}
+
+.social-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    color: #c0c8d8;
+    font-size: 1rem;
+    transition: var(--transition);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    cursor: default;
+    /* Visual only, as requested */
+}
+
+.social-icon:hover {
+    background: var(--primary-gradient);
+    color: #fff;
+    border-color: transparent;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(196, 30, 58, 0.3);
+}
+
 .footer-bottom {
     padding-top: 1rem;
     text-align: center;
@@ -1593,10 +1664,13 @@ textarea.form-control {
 }
 
 @keyframes loaderPulse {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: scale(1);
         opacity: 0.5;
     }
+
     50% {
         transform: scale(1.5);
         opacity: 0.2;
@@ -1623,11 +1697,14 @@ textarea.form-control {
 }
 
 @keyframes loaderText {
-    0%, 100% {
+
+    0%,
+    100% {
         opacity: 0.7;
         transform: scale(0.98);
         filter: brightness(0.8);
     }
+
     50% {
         opacity: 1;
         transform: scale(1.02);
@@ -1695,9 +1772,12 @@ textarea.form-control {
 
 /* Floating animation */
 @keyframes float {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateY(0);
     }
+
     50% {
         transform: translateY(-10px);
     }
@@ -1709,9 +1789,12 @@ textarea.form-control {
 
 /* Glow effect */
 @keyframes glow {
-    0%, 100% {
+
+    0%,
+    100% {
         box-shadow: 0 0 20px rgba(196, 30, 58, 0.3);
     }
+
     50% {
         box-shadow: 0 0 40px rgba(196, 30, 58, 0.5);
     }
