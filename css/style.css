@@ -2454,16 +2454,29 @@ textarea.form-control {
 .salary-table {
     width: 100%;
     border-collapse: collapse;
-    min-width: 500px;
-    /* Ensure scroll on small mobile */
+    /* min-width removed for mobile to prevent scroll if possible, or managed via font size */
 }
 
 .salary-table th,
 .salary-table td {
-    padding: 1rem;
+    padding: 1rem 0.5rem;
     text-align: center;
     border-bottom: 1px solid #eee;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
+}
+
+@media (max-width: 480px) {
+
+    .salary-table th,
+    .salary-table td {
+        padding: 0.75rem 0.2rem;
+        font-size: 0.75rem;
+        word-break: break-all;
+    }
+
+    .salary-table .row-header {
+        font-size: 0.8rem;
+    }
 }
 
 .salary-table th {
