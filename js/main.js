@@ -94,6 +94,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (navLinks && navLinks.classList.contains('active')) {
                     navLinks.classList.remove('active');
                     hamburger.classList.remove('active');
+
+                    // Reset hamburger icon
+                    const spans = hamburger.querySelectorAll('span');
+                    spans[0].style.transform = 'none';
+                    spans[1].style.opacity = '1';
+                    spans[2].style.transform = 'none';
                 }
                 // Scroll with offset for fixed navbar
                 const navHeight = navbar.offsetHeight;
