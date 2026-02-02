@@ -41,7 +41,12 @@ body {
     -webkit-text-size-adjust: 100%;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: 'Noto Sans JP', sans-serif;
     font-weight: 700;
     color: var(--secondary-color);
@@ -268,20 +273,46 @@ a {
 }
 
 @keyframes slideDown {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* ===== HERO SECTION ===== */
 .hero {
-    height: 60vh;
+    height: 100svh;
     min-height: 300px;
     width: 100%;
     position: relative;
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: center;
     overflow: hidden;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: var(--white);
+    padding: 0 1rem;
+    padding-bottom: 2rem;
+}
+
+.hero-catchphrase {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.5;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    color: var(--white);
+    font-family: 'Noto Serif JP', serif;
+    letter-spacing: 0.1em;
 }
 
 .hero-bg-wrapper {
@@ -344,8 +375,15 @@ a {
 }
 
 @keyframes scrollWheel {
-    0% { top: 6px; opacity: 1; }
-    100% { top: 20px; opacity: 0; }
+    0% {
+        top: 6px;
+        opacity: 1;
+    }
+
+    100% {
+        top: 20px;
+        opacity: 0;
+    }
 }
 
 /* ===== ABOUT SECTION ===== */
@@ -913,14 +951,14 @@ textarea.form-control {
     min-height: 100px;
 }
 
-.form-group > div {
+.form-group>div {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
     margin-top: 0.5rem;
 }
 
-.form-group > div label {
+.form-group>div label {
     font-weight: 400;
     display: flex;
     align-items: center;
@@ -1026,8 +1064,17 @@ textarea.form-control {
 }
 
 @keyframes pulse {
-    0%, 100% { opacity: 0.6; transform: scale(0.98); }
-    50% { opacity: 1; transform: scale(1.02); }
+
+    0%,
+    100% {
+        opacity: 0.6;
+        transform: scale(0.98);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.02);
+    }
 }
 
 /* ===== ANIMATIONS ===== */
@@ -1042,9 +1089,17 @@ textarea.form-control {
     transform: translateY(0);
 }
 
-.delay-100 { transition-delay: 0.1s; }
-.delay-200 { transition-delay: 0.2s; }
-.delay-300 { transition-delay: 0.3s; }
+.delay-100 {
+    transition-delay: 0.1s;
+}
+
+.delay-200 {
+    transition-delay: 0.2s;
+}
+
+.delay-300 {
+    transition-delay: 0.3s;
+}
 
 /* ===================================================================
    TABLET STYLES (min-width: 600px)
@@ -1063,7 +1118,11 @@ textarea.form-control {
     }
 
     .hero {
-        height: 70vh;
+        height: 100vh;
+    }
+
+    .hero-catchphrase {
+        font-size: 3rem;
     }
 
     .fleet-gallery {
@@ -1154,8 +1213,13 @@ textarea.form-control {
 
     /* Hero */
     .hero {
-        height: 80vh;
+        height: 100vh;
         min-height: 500px;
+    }
+
+    .hero-catchphrase {
+        font-size: 4rem;
+        letter-spacing: 0.15em;
     }
 
     .scroll-text {
@@ -1449,7 +1513,7 @@ textarea.form-control {
         align-items: center;
     }
 
-    .company-layout > div:first-child {
+    .company-layout>div:first-child {
         flex: 1.2;
     }
 
