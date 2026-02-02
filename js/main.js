@@ -28,24 +28,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (hamburger) {
         hamburger.addEventListener('click', () => {
-            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            navLinks.classList.toggle('active');
             hamburger.classList.toggle('active');
-
-            if (navLinks.style.display === 'flex') {
-                navLinks.style.flexDirection = 'column';
-                navLinks.style.position = 'absolute';
-                navLinks.style.top = '100%';
-                navLinks.style.left = '0';
-                navLinks.style.width = '100%';
-                navLinks.style.background = 'rgba(255, 255, 255, 0.98)';
-                navLinks.style.padding = '2rem';
-                navLinks.style.textAlign = 'center';
-                navLinks.style.boxShadow = '0 4px 6px rgba(0,0,0,0.1)';
-            } else {
-                navLinks.style = '';
-            }
         });
     }
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (navLinks && navLinks.classList.contains('active')) {
+            if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+                navLinks.classList.remove('active');
+                hamburger.classList.remove('active');
+            }
+        }
+    });
 
     // Smooth Scrolling
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -53,12 +49,18 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
-                target.scrollIntoView({
+                // Close mobile menu
+                if (navLinks && navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    hamburger.classList.remove('active');
+                }
+                // Scroll with offset for fixed navbar
+                const navHeight = navbar.offsetHeight;
+                const targetPosition = target.getBoundingClientRect().top + window.scrollY - navHeight;
+                window.scrollTo({
+                    top: targetPosition,
                     behavior: 'smooth'
                 });
-                if (window.innerWidth <= 768 && navLinks) {
-                    navLinks.style.display = 'none';
-                }
             }
         });
     });
