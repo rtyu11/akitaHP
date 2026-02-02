@@ -864,11 +864,10 @@ a {
 @media (max-width: 768px) {
     .fleet-overlay {
         opacity: 1;
-        /* Always visible on mobile since no hover */
+        /* Always visible on mobile */
         background: rgba(15, 23, 42, 0.85);
-        position: relative;
-        /* Change to block below image or overlay? */
-        /* If absolute, it covers image. Let's keep it absolute but visible. */
+        /* Ensure it remains absolute to overlay the image */
+        position: absolute;
     }
 }
 
