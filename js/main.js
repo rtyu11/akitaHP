@@ -183,7 +183,7 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(el);
     });
 
-    // Number Counter Animation Function with enhanced easing
+    // Number Counter Animation Function with simple ease-out
     function animateValue(obj) {
         // If data-target exists, use it. Otherwise parse innerText.
         let target = obj.getAttribute('data-target');
@@ -192,10 +192,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (target) {
             value = parseInt(target);
-            // Suffix is handled by sibling element or assumed empty for data-target usage
         } else {
             let text = obj.innerText;
-            // Extract number and suffix (like '+', '台')
             value = parseInt(text.replace(/[^0-9]/g, ''));
             suffix = text.replace(/[0-9]/g, '');
         }
@@ -203,22 +201,21 @@ document.addEventListener('DOMContentLoaded', () => {
         if (isNaN(value)) return;
 
         let startTimestamp = null;
-        const duration = 2000; // slightly faster for better feel
+        const duration = 2000;
 
         const step = (timestamp) => {
             if (!startTimestamp) startTimestamp = timestamp;
             const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-            // Easing function (easeOutExpo)
-            const easeOutExpo = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
 
-            // Update text content
-            const currentVal = Math.floor(easeOutExpo * value);
+            // Simple Ease Out Cubic for smooth deceleration
+            const ease = 1 - Math.pow(1 - progress, 3);
+
+            const currentVal = Math.floor(ease * value);
             obj.innerText = currentVal + suffix;
 
             if (progress < 1) {
                 window.requestAnimationFrame(step);
             } else {
-                // Ensure final value is exact
                 obj.innerText = value + suffix;
             }
         };
