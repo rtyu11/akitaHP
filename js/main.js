@@ -13,6 +13,18 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1000);
     });
 
+    // Logo Scroll to Top
+    const logoLink = document.querySelector('.logo');
+    if (logoLink) {
+        logoLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+
     // Sticky Navbar with enhanced effects
     const navbar = document.querySelector('.navbar');
     let lastScroll = 0;
