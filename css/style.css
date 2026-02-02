@@ -1317,6 +1317,13 @@ a {
     z-index: 0;
 }
 
+.safety-overlay {
+    position: absolute;
+    inset: 0;
+    /* Stronger white overlay for better text contrast - removed blur as requested */
+    background: rgba(255, 255, 255, 0.92);
+}
+
 .safety-bg-wrapper::before {
     content: '';
     position: absolute;
@@ -1324,17 +1331,10 @@ a {
     background-image: url('../images/safety-bg.jpg');
     background-size: cover;
     background-position: center;
-    /* Removed 'fixed' attachment to fix "zoomed/blurry" issue on some screens */
+    background-attachment: fixed;
     will-change: transform;
-    /* Optimized contrast without excessive filters */
-    filter: brightness(1.05);
-}
-
-.safety-overlay {
-    position: absolute;
-    inset: 0;
-    /* Clean white overlay, adjusted opacity for green text contrast */
-    background: rgba(255, 255, 255, 0.94);
+    /* Slight contrast boost for the image */
+    filter: contrast(1.1);
 }
 
 .safety-wellness .container {
