@@ -773,6 +773,55 @@ a {
     color: var(--primary-light);
 }
 
+/* Fleet List */
+.fleet-list-container {
+    max-width: 600px;
+    margin: 3rem auto 0;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    border-radius: 12px;
+}
+
+.fleet-list-title {
+    text-align: center;
+    color: var(--white);
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 0.5rem;
+}
+
+.fleet-list {
+    list-style: none;
+    padding: 0;
+}
+
+.fleet-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+    color: #e2e8f0;
+}
+
+.fleet-list li:last-child {
+    border-bottom: none;
+}
+
+.fleet-type {
+    font-size: 1rem;
+}
+
+.fleet-count {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--primary-light);
+}
+
 /* ===== FEATURES SECTION ===== */
 .features {
     padding: 3rem 0;
