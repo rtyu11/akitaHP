@@ -773,102 +773,53 @@ a {
     color: var(--primary-light);
 }
 
-/* Fleet Overlay Styles */
-.fleet-card-large {
-    position: relative;
-    overflow: hidden;
-}
-
-.fleet-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(15, 23, 42, 0.7);
-    /* Dark semi-transparent background */
-    backdrop-filter: blur(3px);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+/* Fleet List */
+.fleet-list-container {
+    max-width: 600px;
+    margin: 3rem auto 0;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
     padding: 2rem;
-    opacity: 0;
-    transition: all 0.4s ease;
-    z-index: 10;
+    border-radius: 12px;
 }
 
-/* Make overlay visible on hover or always visible? 
-   User said "on the image", usually implies overlay.
-   Let's make it visible on hover for desktop, always on mobile? 
-   Actually, for important info, a permanent overlay is better. 
-   But text says "Lineup", so image is key. 
-   Let's go with Hover reveal for interactivity, 
-   but added a small indicator or make it semi-visible if needed.
-   
-   Decision: Hover reveal is standard for this layout.
-*/
-.fleet-card:hover .fleet-overlay {
-    opacity: 1;
-}
-
-.fleet-overlay-title {
+.fleet-list-title {
+    text-align: center;
     color: var(--white);
     font-size: 1.25rem;
     margin-bottom: 1.5rem;
-    border-bottom: 2px solid var(--primary-color);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     padding-bottom: 0.5rem;
-    transform: translateY(20px);
-    transition: 0.4s 0.1s;
 }
 
-.fleet-card:hover .fleet-overlay-title {
-    transform: translateY(0);
-}
-
-.fleet-overlay-list {
+.fleet-list {
     list-style: none;
     padding: 0;
-    width: 100%;
-    max-width: 320px;
-    transform: translateY(20px);
-    transition: 0.4s 0.2s;
 }
 
-.fleet-card:hover .fleet-overlay-list {
-    transform: translateY(0);
-}
-
-.fleet-overlay-list li {
+.fleet-list li {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0.75rem 0;
-    border-bottom: 1px dashed rgba(255, 255, 255, 0.2);
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
     color: #e2e8f0;
 }
 
-.fleet-overlay-list li:last-child {
+.fleet-list li:last-child {
     border-bottom: none;
 }
 
-.fleet-overlay-list .type {
-    font-size: 0.95rem;
+.fleet-type {
+    font-size: 1rem;
 }
 
-.fleet-overlay-list .count {
+.fleet-count {
     font-family: 'Outfit', sans-serif;
     font-weight: 700;
     font-size: 1.2rem;
     color: var(--primary-light);
-}
-
-/* Mobile Adjustment for Overlay */
-@media (max-width: 768px) {
-    .fleet-overlay {
-        opacity: 1;
-        /* Always visible on mobile */
-        background: rgba(15, 23, 42, 0.85);
-        /* Ensure it remains absolute to overlay the image */
-        position: absolute;
-    }
 }
 
 /* ===== FEATURES SECTION ===== */
