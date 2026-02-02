@@ -201,17 +201,25 @@ document.addEventListener('DOMContentLoaded', () => {
         if (isNaN(value)) return;
 
         let startTimestamp = null;
-        const duration = 2000;
+        const duration = 2500;
 
         const step = (timestamp) => {
             if (!startTimestamp) startTimestamp = timestamp;
             const progress = Math.min((timestamp - startTimestamp) / duration, 1);
 
-            // Simple Ease Out Cubic for smooth deceleration
-            const ease = 1 - Math.pow(1 - progress, 3);
+            // Elastic Ease Out for a "rich", bouncy feel
+            const c4 = (2 * Math.PI) / 3;
+            const ease = progress === 0
+                ? 0
+                : progress === 1
+                    ? 1
+                    : Math.pow(2, -10 * progress) * Math.sin((progress * 10 - 0.75) * c4) + 1;
 
+            // Prevent overshooting the displayed number significantly during animation frames
             const currentVal = Math.floor(ease * value);
-            obj.innerText = currentVal + suffix;
+
+            // Allow slight bounce visually by maybe scaling? 
+            obj.innerText = (currentVal > value ? value : currentVal) + suffix;
 
             if (progress < 1) {
                 window.requestAnimationFrame(step);
