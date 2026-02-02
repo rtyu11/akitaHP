@@ -147,7 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 entry.target.classList.add('is-visible');
 
                 // Trigger counter animation if it's a number element
-                if (entry.target.classList.contains('stat-num') || entry.target.classList.contains('count')) {
+                if (entry.target.classList.contains('stat-num') || entry.target.classList.contains('count') || entry.target.classList.contains('fleet-count')) {
                     animateValue(entry.target);
                 }
 
@@ -157,7 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, observerOptions);
 
     // Targets to animate on scroll
-    const targets = document.querySelectorAll('.animate-on-scroll, .section-title, .section-desc, .stat-num, .fleet-card, .feature-box, .wellness-card, .recruit-content, .safety-point, .scene-item, .company-layout, .job-item');
+    const targets = document.querySelectorAll('.animate-on-scroll, .section-title, .section-desc, .stat-num, .fleet-card, .feature-box, .wellness-card, .recruit-content, .safety-point, .scene-item, .company-layout, .job-item, .fleet-count');
 
     targets.forEach((el, index) => {
         // Add base class if not present

@@ -1317,6 +1317,13 @@ a {
     z-index: 0;
 }
 
+.safety-overlay {
+    position: absolute;
+    inset: 0;
+    /* Stronger white overlay for better text contrast - removed blur as requested */
+    background: rgba(255, 255, 255, 0.92);
+}
+
 .safety-bg-wrapper::before {
     content: '';
     position: absolute;
@@ -1326,13 +1333,8 @@ a {
     background-position: center;
     background-attachment: fixed;
     will-change: transform;
-}
-
-.safety-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(255, 245, 245, 0.9) 0%, rgba(255, 255, 255, 0.7) 100%);
-    backdrop-filter: blur(3px);
+    /* Slight contrast boost for the image */
+    filter: contrast(1.1);
 }
 
 .safety-wellness .container {
@@ -1543,13 +1545,32 @@ a {
     display: none;
 }
 
-.contact .section-title {
-    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark), var(--primary-color));
-    background-size: 200% auto;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: shimmer 3s linear infinite;
+.contact-cta {
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+    z-index: 2;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 2rem;
+    border-radius: 16px;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cta-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 1rem;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.cta-text {
+    color: var(--white);
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 .contact-wrapper {
