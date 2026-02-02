@@ -1302,7 +1302,110 @@ a {
     display: none;
 }
 
+
+/* ===== SAFETY & WELLNESS ===== */
+.safety-wellness {
+    position: relative;
+    padding: 4rem 0;
+    overflow: hidden;
+    background: transparent;
+}
+
+.safety-bg-wrapper {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.safety-bg-wrapper::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('../images/safety-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    will-change: transform;
+}
+
+.safety-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255, 245, 245, 0.9) 0%, rgba(255, 255, 255, 0.7) 100%);
+    backdrop-filter: blur(3px);
+}
+
+.safety-wellness .container {
+    position: relative;
+    z-index: 1;
+}
+
+.safety-wellness-grid {
+    display: grid;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.sw-card {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+}
+
+.sw-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 10px 40px rgba(46, 204, 113, 0.15);
+    border-color: #fff;
+}
+
+.sw-icon {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+    color: #2e7d32;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+    transition: var(--transition);
+    box-shadow: 0 4px 10px rgba(46, 125, 50, 0.1);
+}
+
+.sw-card:hover .sw-icon {
+    background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+    color: #fff;
+    transform: scale(1.1) rotate(10deg);
+    box-shadow: 0 8px 20px rgba(46, 204, 113, 0.3);
+}
+
+.sw-card h3 {
+    font-size: 1.2rem;
+    color: var(--secondary-color);
+    margin: 0;
+}
+
+.sw-card p {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    line-height: 1.7;
+    margin: 0;
+}
+
 /* ===== RECRUIT SECTION ===== */
+
 .recruit {
     background: linear-gradient(180deg, var(--bg-color) 0%, var(--bg-accent) 100%);
     padding: 3rem 0;
@@ -2124,84 +2227,32 @@ textarea.form-control {
         font-size: 1.15rem;
     }
 
-    /* ===== SAFETY & WELLNESS (New Merged Section) ===== */
+    /* ===== SAFETY & WELLNESS (Adjustments for Desktop) ===== */
     .safety-wellness {
-        padding: 6rem 0;
-        background-color: var(--white);
-        position: relative;
-        overflow: hidden;
+        padding: 8rem 0;
     }
 
-    .safety-wellness::before {
-        content: '';
-        position: absolute;
-        top: -10%;
-        right: -10%;
-        width: 60%;
-        height: 70%;
-        background: radial-gradient(circle, rgba(220, 20, 60, 0.03) 0%, transparent 60%);
-        z-index: 0;
-    }
+    /* .safety-wellness::before removed as we use the wrapper now */
 
     .safety-wellness-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 2rem;
-        margin-top: 3rem;
-        position: relative;
-        z-index: 1;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2.5rem;
+        margin-top: 4rem;
     }
 
     .sw-card {
-        background: var(--white);
-        padding: 2.5rem 2rem;
-        border-radius: 12px;
-        box-shadow: var(--shadow-main);
-        transition: var(--transition);
-        border: 1px solid rgba(0, 0, 0, 0.03);
-        display: flex;
-        flex-direction: column;
+        padding: 3rem 2rem;
         align-items: flex-start;
-        gap: 1rem;
+        text-align: left;
     }
 
     .sw-card:hover {
-        transform: translateY(-8px);
-        box-shadow: var(--shadow-hover);
-        border-color: rgba(220, 20, 60, 0.1);
+        transform: translateY(-10px);
     }
 
-    .sw-icon {
-        width: 60px;
-        height: 60px;
-        background: var(--bg-accent);
-        color: var(--primary-color);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.5rem;
-        margin-bottom: 0.5rem;
-        transition: var(--transition);
-    }
-
-    .sw-card:hover .sw-icon {
-        background: var(--primary-gradient);
-        color: var(--white);
-        transform: rotateY(180deg);
-    }
-
-    .sw-card h3 {
-        font-size: 1.25rem;
-        color: var(--secondary-color);
-        margin: 0;
-    }
-
-    .sw-card p {
-        font-size: 0.95rem;
-        color: var(--text-light);
-        line-height: 1.7;
-        margin: 0;
+    /* Icon alignment adjustment for desktop if needed */
+    .sw-card .sw-icon {
+        margin-bottom: 1.5rem;
     }
 
     /* Company */
