@@ -203,47 +203,112 @@ document.addEventListener('DOMContentLoaded', () => {
         // Add enhanced animation class
         obj.classList.add('counting');
 
+        // Add particle effect container
+        const isFleetCount = obj.classList.contains('fleet-count');
+        if (isFleetCount) {
+            const wrapper = obj.closest('.fleet-count-wrapper') || obj.parentElement;
+            if (wrapper && !wrapper.querySelector('.count-particles')) {
+                const particles = document.createElement('div');
+                particles.className = 'count-particles';
+                particles.style.cssText = `
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    pointer-events: none;
+                    z-index: -1;
+                `;
+                wrapper.style.position = 'relative';
+                wrapper.appendChild(particles);
+
+                // Create sparkle particles
+                for (let i = 0; i < 6; i++) {
+                    const particle = document.createElement('div');
+                    const angle = (i / 6) * Math.PI * 2;
+                    particle.style.cssText = `
+                        position: absolute;
+                        width: 4px;
+                        height: 4px;
+                        background: var(--primary-light);
+                        border-radius: 50%;
+                        opacity: 0;
+                        animation: particleFloat 1.5s ease-out ${i * 0.1}s;
+                        left: ${Math.cos(angle) * 30}px;
+                        top: ${Math.sin(angle) * 30}px;
+                        box-shadow: 0 0 8px var(--primary-light);
+                    `;
+                    particles.appendChild(particle);
+                }
+
+                // Add keyframes for particles
+                if (!document.getElementById('particle-animation')) {
+                    const style = document.createElement('style');
+                    style.id = 'particle-animation';
+                    style.textContent = `
+                        @keyframes particleFloat {
+                            0% { opacity: 0; transform: scale(0) translate(0, 0); }
+                            50% { opacity: 1; }
+                            100% { opacity: 0; transform: scale(1) translate(var(--tx, 0), var(--ty, 0)); }
+                        }
+                    `;
+                    document.head.appendChild(style);
+                }
+            }
+        }
+
         let startTimestamp = null;
-        const duration = 2500; // Slightly longer for more impact
-        const overshoot = 1.1; // Overshoot multiplier for bounce effect
+        const duration = 2800; // Longer for more dramatic effect
+        const overshoot = 1.12; // Slightly more overshoot
 
         const step = (timestamp) => {
             if (!startTimestamp) startTimestamp = timestamp;
             const progress = Math.min((timestamp - startTimestamp) / duration, 1);
 
-            // Enhanced easing with elastic overshoot
+            // Enhanced easing with smoother elastic overshoot
             let ease;
-            if (progress < 0.7) {
-                // Accelerate then decelerate
-                ease = progress < 0.5
-                    ? 4 * progress * progress * progress
-                    : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+            if (progress < 0.75) {
+                // Smooth acceleration with overshoot
+                const t = progress / 0.75;
+                ease = t < 0.5
+                    ? 4 * t * t * t
+                    : 1 - Math.pow(-2 * t + 2, 3) / 2;
                 ease *= overshoot;
             } else {
-                // Bounce back from overshoot
-                const bounceProgress = (progress - 0.7) / 0.3;
-                ease = overshoot - (overshoot - 1) * (1 - Math.pow(1 - bounceProgress, 3));
+                // Elastic bounce back
+                const bounceProgress = (progress - 0.75) / 0.25;
+                const elastic = Math.pow(2, -10 * bounceProgress) * Math.sin((bounceProgress - 0.1) * 5 * Math.PI);
+                ease = 1 + (overshoot - 1) * (1 - bounceProgress) + elastic * 0.05;
             }
 
             const currentVal = Math.floor(ease * value);
             obj.innerText = currentVal + suffix;
 
-            // Add pulsing glow effect during counting
+            // Add multi-layered pulsing glow effect during counting
             if (progress < 1) {
-                const glowIntensity = Math.sin(progress * Math.PI * 8) * 0.3 + 0.7;
-                obj.style.textShadow = `0 0 ${20 * glowIntensity}px rgba(196, 30, 58, ${0.6 * glowIntensity})`;
+                const glowIntensity = Math.sin(progress * Math.PI * 10) * 0.4 + 0.6;
+                const spreadIntensity = 20 + progress * 15;
+                obj.style.textShadow = `
+                    0 0 ${spreadIntensity * glowIntensity}px rgba(196, 30, 58, ${0.7 * glowIntensity}),
+                    0 0 ${spreadIntensity * glowIntensity * 1.5}px rgba(196, 30, 58, ${0.5 * glowIntensity}),
+                    0 0 ${spreadIntensity * glowIntensity * 2}px rgba(196, 30, 58, ${0.3 * glowIntensity})
+                `;
                 window.requestAnimationFrame(step);
             } else {
                 obj.innerText = value + suffix;
                 obj.classList.remove('counting');
                 obj.classList.add('count-complete');
-                // Final glow
-                obj.style.textShadow = '0 0 25px rgba(196, 30, 58, 0.8), 0 0 40px rgba(196, 30, 58, 0.4)';
+                // Final explosive glow
+                obj.style.textShadow = `
+                    0 0 30px rgba(196, 30, 58, 1),
+                    0 0 50px rgba(196, 30, 58, 0.6),
+                    0 0 70px rgba(196, 30, 58, 0.3)
+                `;
 
-                // Fade out glow after completion
+                // Fade out glow smoothly
                 setTimeout(() => {
+                    obj.style.transition = 'text-shadow 1s ease-out';
                     obj.style.textShadow = '';
-                }, 800);
+                }, 300);
             }
         };
         window.requestAnimationFrame(step);
