@@ -2901,9 +2901,10 @@ textarea.form-control {
 }
 
 .sw-title-green {
-    background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 50%, #2e7d32 100%) !important;
-    background-size: 200% auto !important;
-    -webkit-background-clip: text !important;
-    background-clip: text !important;
-    -webkit-text-fill-color: transparent !important;
+    background: none !important;
+    background-color: transparent !important;
+    -webkit-text-fill-color: #2e7d32 !important;
+    color: #2e7d32 !important;
+    animation: none !important;
+    text-shadow: none !important;
 }
