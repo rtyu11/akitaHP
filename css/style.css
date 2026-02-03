@@ -1347,12 +1347,13 @@ a {
 .safety-bg-wrapper::before {
     content: '';
     position: absolute;
-    inset: 0;
+    inset: -150px 0;
     background-image: url('../images/safety-bg.jpg');
     background-size: cover;
-    background-position: center 80%;
+    background-position: center center;
     background-repeat: no-repeat;
-    /* Remove fixed attachment to prevent blur from scaling */
+    transform: translateY(-80px);
+    /* Manually shift image up */
     will-change: transform;
     /* Sharpen and enhance image quality */
     filter: contrast(1.2) saturate(1.15) brightness(1.1) blur(0px);
