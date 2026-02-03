@@ -1338,12 +1338,10 @@ a {
     position: absolute;
     inset: 0;
     /* Lighter overlay to show more of the background image */
-    background: linear-gradient(
-        135deg,
-        rgba(255, 255, 255, 0.85) 0%,
-        rgba(255, 255, 255, 0.80) 50%,
-        rgba(255, 255, 255, 0.83) 100%
-    );
+    background: linear-gradient(135deg,
+            rgba(255, 255, 255, 0.85) 0%,
+            rgba(255, 255, 255, 0.80) 50%,
+            rgba(255, 255, 255, 0.83) 100%);
 }
 
 .safety-bg-wrapper::before {
@@ -2900,4 +2898,12 @@ textarea.form-control {
     .highlight-cell {
         font-size: 1.2rem;
     }
+}
+
+.sw-title-green {
+    background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 50%, #2e7d32 100%) !important;
+    background-size: 200% auto !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
 }
