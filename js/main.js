@@ -183,7 +183,7 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(el);
     });
 
-    // Number Counter Animation Function with simple ease-out
+    // Enhanced Number Counter Animation with rich visual effects
     function animateValue(obj) {
         // If data-target exists, use it. Otherwise parse innerText.
         let target = obj.getAttribute('data-target');
@@ -200,23 +200,50 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (isNaN(value)) return;
 
+        // Add enhanced animation class
+        obj.classList.add('counting');
+
         let startTimestamp = null;
-        const duration = 2000;
+        const duration = 2500; // Slightly longer for more impact
+        const overshoot = 1.1; // Overshoot multiplier for bounce effect
 
         const step = (timestamp) => {
             if (!startTimestamp) startTimestamp = timestamp;
             const progress = Math.min((timestamp - startTimestamp) / duration, 1);
 
-            // Simple Ease Out Cubic for smooth deceleration
-            const ease = 1 - Math.pow(1 - progress, 3);
+            // Enhanced easing with elastic overshoot
+            let ease;
+            if (progress < 0.7) {
+                // Accelerate then decelerate
+                ease = progress < 0.5
+                    ? 4 * progress * progress * progress
+                    : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+                ease *= overshoot;
+            } else {
+                // Bounce back from overshoot
+                const bounceProgress = (progress - 0.7) / 0.3;
+                ease = overshoot - (overshoot - 1) * (1 - Math.pow(1 - bounceProgress, 3));
+            }
 
             const currentVal = Math.floor(ease * value);
             obj.innerText = currentVal + suffix;
 
+            // Add pulsing glow effect during counting
             if (progress < 1) {
+                const glowIntensity = Math.sin(progress * Math.PI * 8) * 0.3 + 0.7;
+                obj.style.textShadow = `0 0 ${20 * glowIntensity}px rgba(196, 30, 58, ${0.6 * glowIntensity})`;
                 window.requestAnimationFrame(step);
             } else {
                 obj.innerText = value + suffix;
+                obj.classList.remove('counting');
+                obj.classList.add('count-complete');
+                // Final glow
+                obj.style.textShadow = '0 0 25px rgba(196, 30, 58, 0.8), 0 0 40px rgba(196, 30, 58, 0.4)';
+
+                // Fade out glow after completion
+                setTimeout(() => {
+                    obj.style.textShadow = '';
+                }, 800);
             }
         };
         window.requestAnimationFrame(step);
@@ -384,7 +411,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Add CSS for loading spinner
+    // Add CSS for loading spinner and enhanced counter animations
     const style = document.createElement('style');
     style.textContent = `
         .loading-spinner {
@@ -414,6 +441,65 @@ document.addEventListener('DOMContentLoaded', () => {
 
         body.loaded .hero-content {
             animation: heroFadeIn 1s ease-out forwards;
+        }
+
+        /* Enhanced counter animations */
+        .fleet-count.counting {
+            animation: counterPulse 0.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes counterPulse {
+            from {
+                transform: scale(1);
+            }
+            to {
+                transform: scale(1.15);
+            }
+        }
+
+        .fleet-count.count-complete {
+            animation: counterComplete 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes counterComplete {
+            0% {
+                transform: scale(1.15);
+            }
+            50% {
+                transform: scale(1.25) rotate(2deg);
+            }
+            100% {
+                transform: scale(1) rotate(0deg);
+            }
+        }
+
+        .stat-num.counting {
+            animation: statPulse 0.4s ease-in-out infinite alternate;
+        }
+
+        @keyframes statPulse {
+            from {
+                transform: scale(1);
+            }
+            to {
+                transform: scale(1.1);
+            }
+        }
+
+        .stat-num.count-complete {
+            animation: statComplete 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes statComplete {
+            0% {
+                transform: scale(1.1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
+            }
         }
     `;
     document.head.appendChild(style);
