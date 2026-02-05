@@ -6,7 +6,7 @@ function doPost(e) {
         var data = JSON.parse(e.postData.contents);
 
         // 2. Configure Email
-        var recipient = "YOUR_EMAIL_ADDRESS@example.com"; // ★ CHANGE THIS to your email ★
+        var recipient = "r-otake@t-carry.co.jp"; // テスト送信先
         var subject = "【HPより問い合わせ】" + data.name + "様";
 
         var body = "";
@@ -14,12 +14,12 @@ function doPost(e) {
         body += "--------------------------------------\n";
         body += "お名前: " + data.name + "\n";
         body += "メール: " + data.email + "\n";
-        body += "電話番号: " + data.phone + "\n";
+        body += "ご用件: " + data.type + "\n";
         body += "--------------------------------------\n";
         body += "\n【お問い合わせ内容】\n";
         body += data.message + "\n\n";
         body += "--------------------------------------\n";
-        body += "送信日時: " + new Date().toLocaleString();
+        body += "送信日時: " + new Date().toLocaleString("ja-JP", { timeZone: "Asia/Tokyo" });
 
         // 3. Send Email
         MailApp.sendEmail({

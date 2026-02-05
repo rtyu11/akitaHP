@@ -454,7 +454,51 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.disabled = true;
             btn.style.opacity = '0.8';
 
-            setTimeout(() => {
+            // Collect form data
+            const formData = new FormData(form);
+            const data = {};
+            formData.forEach((value, key) => data[key] = value);
+
+            // ★ここにGoogle Apps ScriptのウェブアプリURLを設定してください★
+            const SCRIPT_URL = "YOUR_GAS_WEB_APP_URL_HERE";
+
+            if (SCRIPT_URL === "YOUR_GAS_WEB_APP_URL_HERE") {
+                console.warn("GAS URL not set. Simulating success for UI testing.");
+                // Fallback for UI testing if URL is not set yet
+                setTimeout(() => {
+                    handleSuccess();
+                }, 2000);
+                return;
+            }
+
+            fetch(SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            })
+                .then(() => {
+                    // With no-cors, we can't check response.ok, so we assume success if no network error
+                    handleSuccess();
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    btn.innerHTML = '<i class="fas fa-exclamation-triangle"></i> 送信失敗';
+                    btn.style.background = '#dc2626';
+                    document.getElementById('formStatus').innerText = '送信エラーが発生しました。時間をおいて再度お試しください。';
+                    document.getElementById('formStatus').style.color = '#dc2626';
+
+                    setTimeout(() => {
+                        btn.innerHTML = originalText;
+                        btn.disabled = false;
+                        btn.style.background = '';
+                        btn.style.opacity = '1';
+                    }, 3000);
+                });
+
+            function handleSuccess() {
                 btn.innerHTML = '✓ 送信完了';
                 btn.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
                 document.getElementById('formStatus').innerText = 'お問い合わせありがとうございます。担当者より折り返しご連絡いたします。';
@@ -472,7 +516,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     btn.style.background = '';
                     btn.style.opacity = '1';
                 }, 4000);
-            }, 2000);
+            }
         });
     }
 
