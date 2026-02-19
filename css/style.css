@@ -135,6 +135,8 @@ p:last-child {
     cursor: pointer;
     padding: 0;
     flex-shrink: 0;
+    position: relative;
+    z-index: 1100;
 }
 
 .hamburger span {
@@ -557,7 +559,7 @@ p:last-child {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #8b0000;
+    background-color: #222;
 }
 
 .page-hero__bg {
