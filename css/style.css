@@ -15,6 +15,7 @@ body {
     line-height: 1.7;
     color: #333;
     background-color: #fff;
+    overflow-x: hidden;
 }
 
 a {
@@ -667,7 +668,7 @@ p:last-child {
     padding: 4px;
     background: #fff;
     margin-bottom: 12px;
-    max-width: 480px;
+    max-width: min(480px, 100%);
 }
 
 /* ============================
