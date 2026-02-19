@@ -74,7 +74,7 @@ p:last-child {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: transparent;
+    background-color: var(--color-header-bg);
     z-index: 1000;
     height: var(--header-height);
     transition: background-color 0.4s ease, box-shadow 0.4s ease;
@@ -1888,6 +1888,23 @@ p:last-child {
 
     .page-hero {
         height: 180px;
+    }
+
+    /* ヘッダー モバイル */
+    .header-inner {
+        padding: 0 12px;
+        gap: 8px;
+    }
+
+    .site-logo-text {
+        display: none;
+    }
+
+    /* 事業内容ページ 車両画像 */
+    .fleet-item img {
+        max-width: 100%;
+        width: 100%;
+        height: auto;
     }
 
     /* フォームをブロック表示 */
