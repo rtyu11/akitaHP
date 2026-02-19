@@ -4,86 +4,224 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>有限会社 秋多運送 ホームページ</title>
-    <meta name="description" content="東京都あきる野市の運送会社、秋多運送です。">
+    <title>有限会社 秋多運送 | 東京都あきる野市の運送会社</title>
+    <meta name="description" content="東京都あきる野市の運送会社、有限会社秋多運送。昭和48年創業。大型・中型トラックによる信頼と実績の運送サービスを提供しています。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="images/logo.jpg">
 </head>
 
 <body>
-    <div class="wrapper-main">
-        <header class="header">
-            <div class="container">
-                <div class="logo-area">
-                    <h1>秋多運送</h1>
-                    <p class="sub-title">東京都あきる野市の運送会社</p>
-                </div>
-                <!-- Navigation -->
-                <nav class="nav-menu">
-                    <ul>
-                        <li><a href="index.html" class="active">ホーム</a></li>
-                        <li><a href="company.html">会社案内</a></li>
-                        <li><a href="service.html">事業内容</a></li>
-                        <li><a href="safety.html">安全への取組</a></li>
-                        <li><a href="recruit.html">採用情報</a></li>
-                        <li><a href="contact.html">お問い合わせ</a></li>
-                    </ul>
-                </nav>
+
+    <!-- ============================
+         HEADER
+         ============================ -->
+    <header class="site-header">
+        <div class="header-inner">
+            <div class="site-logo">
+                <a href="index.html">
+                    <span class="site-logo-text">有限会社 秋多運送</span>
+                </a>
             </div>
-        </header>
-
-        <main class="main-content">
-            <!-- Main Visual -->
-            <div class="main-visual">
-                <img src="images/車両 (1).jpg" alt="秋多運送トラック">
-                <div class="visual-text">
-                    <h2>心で運ぶ、未来をつなぐ。</h2>
-                </div>
+            <nav class="global-nav">
+                <ul>
+                    <li><a href="index.html" class="active">ホーム</a></li>
+                    <li><a href="company.html">会社案内</a></li>
+                    <li><a href="service.html">事業内容</a></li>
+                    <li><a href="safety.html">安全への取組</a></li>
+                    <li><a href="recruit.html">採用情報</a></li>
+                    <li><a href="contact.html">お問い合わせ</a></li>
+                </ul>
+            </nav>
+            <div class="header-tel">
+                <span>お電話でのお問い合わせ</span>
+                <strong>042-532-8256</strong>
             </div>
+            <button class="hamburger" aria-label="メニューを開く" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
 
-            <!-- News / Info -->
-            <section class="section-content">
-                <h3>新着情報</h3>
-                <div class="news-box">
-                    <dl>
-                        <dt>2026.02.01</dt>
-                        <dd>ホームページをリニューアルしました。</dd>
-                        <dt>2026.01.15</dt>
-                        <dd>採用情報を更新しました。</dd>
-                    </dl>
+    <!-- スマホ用ナビ -->
+    <nav class="sp-nav">
+        <ul>
+            <li><a href="index.html" class="active">ホーム</a></li>
+            <li><a href="company.html">会社案内</a></li>
+            <li><a href="service.html">事業内容</a></li>
+            <li><a href="safety.html">安全への取組</a></li>
+            <li><a href="recruit.html">採用情報</a></li>
+            <li><a href="contact.html">お問い合わせ</a></li>
+        </ul>
+    </nav>
+
+    <main>
+
+        <!-- ============================
+             1. HERO SLIDER
+             ============================ -->
+        <section class="hero-slider">
+            <div class="hero-slide is-active">
+                <img src="images/車両 (1).jpg" alt="秋多運送 大型トラック">
+            </div>
+            <div class="hero-slide">
+                <img src="images/車両 (2).jpg" alt="秋多運送 中型トラック">
+            </div>
+            <div class="hero-slide">
+                <img src="images/車両 (3).jpg" alt="秋多運送 車両">
+            </div>
+            <div class="hero-text">
+                <h2>心で運ぶ、<br>未来をつなぐ。</h2>
+                <p>東京・西多摩から、あなたの大切なものをお届けします。</p>
+            </div>
+            <div class="hero-dots">
+                <button class="hero-dot is-active" aria-label="スライド1へ"></button>
+                <button class="hero-dot" aria-label="スライド2へ"></button>
+                <button class="hero-dot" aria-label="スライド3へ"></button>
+            </div>
+        </section>
+
+        <!-- ============================
+             2. NEWS 新着情報
+             ============================ -->
+        <section class="section section--gray" id="news">
+            <div class="inner">
+                <div class="section-head">
+                    <span class="en-title">NEWS</span>
+                    <span class="ja-title">新着情報</span>
                 </div>
-            </section>
-
-            <!-- Links -->
-            <section class="section-content">
-                <div class="top-banners">
-                    <a href="recruit.html" class="banner-link">
-                        <div class="banner-inner">
-                            <h3>ドライバー募集</h3>
-                            <p>未経験者歓迎！福利厚生充実</p>
+                <div class="news-list">
+                    <div class="news-item">
+                        <div class="news-item__meta">
+                            <span class="news-item__date">2026.02.01</span>
+                            <span class="news-item__category">お知らせ</span>
                         </div>
-                    </a>
-                    <a href="service.html" class="banner-link">
-                        <div class="banner-inner">
-                            <h3>事業案内</h3>
-                            <p>保有車両・サービスについて</p>
+                        <p class="news-item__title">ホームページをリニューアルしました。</p>
+                        <span class="news-item__arrow">›</span>
+                    </div>
+                    <div class="news-item">
+                        <div class="news-item__meta">
+                            <span class="news-item__date">2026.01.15</span>
+                            <span class="news-item__category">採用</span>
                         </div>
-                    </a>
+                        <p class="news-item__title">採用情報を更新しました。ドライバー募集中です。</p>
+                        <span class="news-item__arrow">›</span>
+                    </div>
                 </div>
-            </section>
-        </main>
-
-        <footer class="footer">
-            <div class="container">
-                <div class="footer-info">
-                    <h4>有限会社 秋多運送</h4>
-                    <p>〒197-0811 東京都あきる野市市原小宮2-3-6</p>
-                    <p>TEL: 042-532-8256</p>
-                </div>
-                <p class="copyright">&copy; 2026 Akita Unso Co., Ltd. All Rights Reserved.</p>
             </div>
-        </footer>
-    </div>
+        </section>
+
+        <!-- ============================
+             3. ABOUT US 秋多運送について
+             ============================ -->
+        <section class="section" id="about">
+            <div class="inner">
+                <div class="section-head">
+                    <span class="en-title">ABOUT US</span>
+                    <span class="ja-title">秋多運送について</span>
+                </div>
+                <div class="about-inner">
+                    <div class="about-text">
+                        <p>昭和48年の創業以来、東京の西多摩という自然豊かな地で、地域に根ざした運送業を営んでまいりました。</p>
+                        <p>お客様の大切な荷物を「心で運ぶ」という姿勢を大切に、安全・確実・迅速なサービスを提供し続けています。大型・中型ウイング車を中心とした充実した車両ラインナップで、多様な輸送ニーズにお応えします。</p>
+                        <a href="company.html" class="btn-more">会社案内を見る</a>
+                    </div>
+                    <div class="about-image">
+                        <img src="images/about-img.jpg" alt="秋多運送について">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================
+             4. VEHICLE 保有台数
+             ============================ -->
+        <section class="section section--gray" id="vehicle">
+            <div class="inner">
+                <div class="section-head">
+                    <span class="en-title">VEHICLE</span>
+                    <span class="ja-title">保有台数</span>
+                </div>
+                <div class="vehicle-grid">
+                    <div class="vehicle-item">
+                        <span class="vehicle-item__num">6<span class="vehicle-item__unit">台</span></span>
+                        <span class="vehicle-item__label">大型ウイング (13t)</span>
+                    </div>
+                    <div class="vehicle-item">
+                        <span class="vehicle-item__num">2<span class="vehicle-item__unit">台</span></span>
+                        <span class="vehicle-item__label">増トンウイング (7t PG)</span>
+                    </div>
+                    <div class="vehicle-item">
+                        <span class="vehicle-item__num">11<span class="vehicle-item__unit">台</span></span>
+                        <span class="vehicle-item__label">中型ウイング (4t PG)</span>
+                    </div>
+                    <div class="vehicle-item">
+                        <span class="vehicle-item__num">2<span class="vehicle-item__unit">台</span></span>
+                        <span class="vehicle-item__label">中型ドライバン (4t PG)</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================
+             5. CONTENTS グリッド
+             ============================ -->
+        <section class="contents-grid" id="contents">
+            <a href="service.html" class="contents-card">
+                <img src="images/車両 (1).jpg" alt="事業内容" class="contents-card__bg">
+                <div class="contents-card__body">
+                    <span class="contents-card__en">SERVICE</span>
+                    <span class="contents-card__ja">事業内容</span>
+                    <span class="contents-card__arrow">→</span>
+                </div>
+            </a>
+            <a href="company.html" class="contents-card">
+                <img src="images/about-img.jpg" alt="会社案内" class="contents-card__bg">
+                <div class="contents-card__body">
+                    <span class="contents-card__en">COMPANY</span>
+                    <span class="contents-card__ja">会社案内</span>
+                    <span class="contents-card__arrow">→</span>
+                </div>
+            </a>
+            <a href="safety.html" class="contents-card">
+                <img src="images/safety-bg.jpg" alt="安全への取組" class="contents-card__bg">
+                <div class="contents-card__body">
+                    <span class="contents-card__en">SAFETY</span>
+                    <span class="contents-card__ja">安全への取組</span>
+                    <span class="contents-card__arrow">→</span>
+                </div>
+            </a>
+            <a href="recruit.html" class="contents-card">
+                <img src="images/recruit-img.jpg" alt="採用情報" class="contents-card__bg">
+                <div class="contents-card__body">
+                    <span class="contents-card__en">RECRUIT</span>
+                    <span class="contents-card__ja">採用情報</span>
+                    <span class="contents-card__arrow">→</span>
+                </div>
+            </a>
+        </section>
+
+    </main>
+
+    <!-- ============================
+         FOOTER
+         ============================ -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <p class="footer-logo">有限会社 秋多運送</p>
+            <div class="footer-info">
+                <p>〒197-0811 東京都あきる野市市原小宮2-3-6</p>
+                <p>TEL: <a href="tel:0425328256">042-532-8256</a></p>
+            </div>
+            <p class="footer-copyright">&copy; 2026 Akita Unso Co., Ltd. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
 </body>
 
 </html>
