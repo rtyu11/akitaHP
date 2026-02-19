@@ -48,7 +48,7 @@ p:last-child {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: #1a1a1a;
+    background-color: #cc0000;
     z-index: 1000;
     height: 70px;
 }
@@ -94,7 +94,7 @@ p:last-child {
     display: block;
     padding: 0 14px;
     line-height: 70px;
-    color: #ccc;
+    color: rgba(255,255,255,0.85);
     font-size: 13px;
     font-weight: 500;
     letter-spacing: 0.03em;
@@ -105,7 +105,7 @@ p:last-child {
 .global-nav a:hover,
 .global-nav a.active {
     color: #fff;
-    background-color: #cc0000;
+    background-color: #8b0000;
 }
 
 /* ヘッダー電話番号 */
@@ -164,7 +164,7 @@ p:last-child {
     top: 70px;
     left: 0;
     width: 100%;
-    background-color: #222;
+    background-color: #a80000;
     z-index: 999;
 }
 
@@ -175,15 +175,15 @@ p:last-child {
 .sp-nav ul li a {
     display: block;
     padding: 16px 24px;
-    color: #ccc;
+    color: rgba(255,255,255,0.85);
     font-size: 15px;
-    border-bottom: 1px solid #333;
+    border-bottom: 1px solid #8b0000;
     transition: background-color 0.2s, color 0.2s;
 }
 
 .sp-nav ul li a:hover,
 .sp-nav ul li a.active {
-    background-color: #cc0000;
+    background-color: #8b0000;
     color: #fff;
 }
 
@@ -340,60 +340,6 @@ p:last-child {
 .inner {
     max-width: 1100px;
     margin: 0 auto;
-}
-
-/* ============================
-   NEWS SECTION
-   ============================ */
-.news-list {
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.news-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 20px;
-    padding: 20px 0;
-    border-bottom: 1px solid #e0e0e0;
-}
-
-.news-item__meta {
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    min-width: 120px;
-}
-
-.news-item__date {
-    font-size: 13px;
-    color: #888;
-    letter-spacing: 0.05em;
-}
-
-.news-item__category {
-    display: inline-block;
-    font-size: 11px;
-    padding: 2px 8px;
-    background-color: #cc0000;
-    color: #fff;
-    letter-spacing: 0.05em;
-}
-
-.news-item__title {
-    flex: 1;
-    font-size: 15px;
-    color: #333;
-    line-height: 1.6;
-    margin-bottom: 0;
-}
-
-.news-item__arrow {
-    color: #cc0000;
-    font-size: 20px;
-    align-self: center;
-    flex-shrink: 0;
 }
 
 /* ============================
@@ -559,8 +505,8 @@ p:last-child {
    FOOTER
    ============================ */
 .site-footer {
-    background-color: #222;
-    color: #ccc;
+    background-color: #8b0000;
+    color: #ffd0d0;
     padding: 40px 20px 20px;
     text-align: center;
 }
@@ -586,13 +532,13 @@ p:last-child {
 }
 
 .footer-info a {
-    color: #ccc;
+    color: #ffd0d0;
 }
 
 .footer-copyright {
     font-size: 11px;
-    color: #666;
-    border-top: 1px solid #333;
+    color: #ffaaaa;
+    border-top: 1px solid #6a0000;
     padding-top: 16px;
     margin-top: 16px;
 }
@@ -611,7 +557,7 @@ p:last-child {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #1a1a1a;
+    background-color: #8b0000;
 }
 
 .page-hero__bg {
@@ -860,7 +806,7 @@ p:last-child {
 }
 
 .btn-submit {
-    background-color: #1a1a1a;
+    background-color: #cc0000;
     color: #fff;
     border: none;
     padding: 14px 48px;
@@ -872,7 +818,7 @@ p:last-child {
 }
 
 .btn-submit:hover {
-    background-color: #cc0000;
+    background-color: #8b0000;
 }
 
 /* ============================
