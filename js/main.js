@@ -58,11 +58,11 @@
 // ============================
 (function () {
     var slides = document.querySelectorAll('.hero-slide');
-    var dots   = document.querySelectorAll('.hero-dot');
+    var dots = document.querySelectorAll('.hero-dot');
 
     if (slides.length === 0) return;
 
-    var current  = 0;
+    var current = 0;
     var INTERVAL = 6000;
     var timer;
 
@@ -179,8 +179,47 @@
     var contactForm = document.getElementById('contactForm');
     if (!contactForm) return;
 
+    // Google Apps ScriptのウェブアプリURL
+    var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxGFZWP58Kg682MO3g3aiNI1IRd_6--8N5M6bcN8BaVF86uEpS4S4mtBqimTmUrurGS/exec';
+
     contactForm.addEventListener('submit', function (e) {
         e.preventDefault();
-        alert('お問い合わせありがとうございます。\n担当者よりご連絡いたします。');
+
+        var submitBtn = contactForm.querySelector('.btn-submit');
+        var originalBtnText = submitBtn.textContent;
+
+        // 二重送信防止：ボタンを無効化
+        submitBtn.disabled = true;
+        submitBtn.textContent = '送信中...';
+
+        var formData = new FormData(contactForm);
+        var data = {};
+        formData.forEach(function (value, key) {
+            data[key] = value;
+        });
+
+        // Google Apps Scriptへデータを送信
+        fetch(SCRIPT_URL, {
+            method: 'POST',
+            mode: 'no-cors', // CORSエラー回避のためno-corsを使用
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+            .then(function () {
+                // 送信成功（no-corsの場合はレスポンス内容は確認できませんが、送信は完了しています）
+                alert('お問い合わせありがとうございます。\n正常に送信されました。\n担当者より後ほどご連絡いたします。');
+                contactForm.reset();
+            })
+            .catch(function (error) {
+                console.error('Error!', error.message);
+                alert('送信中にエラーが発生しました。お手数ですが、お電話にて直接ご連絡いただくか、しばらく経ってから再度お試しください。');
+            })
+            .finally(function () {
+                // ボタンを元の状態に戻す
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalBtnText;
+            });
     });
 })();
