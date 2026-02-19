@@ -24,7 +24,9 @@
 /* ============================
    RESET & BASE
    ============================ */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -33,6 +35,11 @@
 html {
     scroll-behavior: smooth;
     overflow-x: hidden;
+}
+
+/* スパム対策（ハニーポット）用 */
+.h-pot {
+    display: none !important;
 }
 
 body {
@@ -339,20 +346,47 @@ p:last-child {
 
 /* Ken Burns & Caption アニメーション */
 @keyframes kenburns {
-    0%   { transform: scale(1.08); }
-    100% { transform: scale(1); }
+    0% {
+        transform: scale(1.08);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }
 
 @keyframes heroTextUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to   { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @keyframes scrollLine {
-    0%   { transform: scaleY(0); transform-origin: top; }
-    50%  { transform: scaleY(1); transform-origin: top; }
-    51%  { transform: scaleY(1); transform-origin: bottom; }
-    100% { transform: scaleY(0); transform-origin: bottom; }
+    0% {
+        transform: scaleY(0);
+        transform-origin: top;
+    }
+
+    50% {
+        transform: scaleY(1);
+        transform-origin: top;
+    }
+
+    51% {
+        transform: scaleY(1);
+        transform-origin: bottom;
+    }
+
+    100% {
+        transform: scaleY(0);
+        transform-origin: bottom;
+    }
 }
 
 .hero-slide.is-active .hero-slide__img {
@@ -364,12 +398,10 @@ p:last-child {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-        to right,
-        rgba(0, 0, 0, 0.6) 0%,
-        rgba(0, 0, 0, 0.3) 60%,
-        rgba(0, 0, 0, 0.1) 100%
-    );
+    background: linear-gradient(to right,
+            rgba(0, 0, 0, 0.6) 0%,
+            rgba(0, 0, 0, 0.3) 60%,
+            rgba(0, 0, 0, 0.1) 100%);
     z-index: 2;
 }
 
@@ -813,23 +845,19 @@ p:last-child {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-        to top,
-        rgba(0, 0, 0, 0.8) 0%,
-        rgba(0, 0, 0, 0.3) 50%,
-        rgba(0, 0, 0, 0.1) 100%
-    );
+    background: linear-gradient(to top,
+            rgba(0, 0, 0, 0.8) 0%,
+            rgba(0, 0, 0, 0.3) 50%,
+            rgba(0, 0, 0, 0.1) 100%);
     transition: background var(--transition);
     z-index: 1;
 }
 
 .contents-card:hover::before {
-    background: linear-gradient(
-        to top,
-        rgba(180, 0, 0, 0.85) 0%,
-        rgba(100, 0, 0, 0.5) 50%,
-        rgba(0, 0, 0, 0.2) 100%
-    );
+    background: linear-gradient(to top,
+            rgba(180, 0, 0, 0.85) 0%,
+            rgba(100, 0, 0, 0.5) 50%,
+            rgba(0, 0, 0, 0.2) 100%);
 }
 
 .contents-card__bg {
@@ -1235,11 +1263,9 @@ p:last-child {
     position: absolute;
     inset: 0;
     z-index: 1;
-    background: linear-gradient(
-        to right,
-        rgba(0, 0, 0, 0.5) 0%,
-        transparent 100%
-    );
+    background: linear-gradient(to right,
+            rgba(0, 0, 0, 0.5) 0%,
+            transparent 100%);
 }
 
 .page-hero__title {
@@ -1534,9 +1560,17 @@ p:last-child {
 }
 
 /* 遅延オプション */
-.fade-in:nth-child(2) { transition-delay: 0.1s; }
-.fade-in:nth-child(3) { transition-delay: 0.2s; }
-.fade-in:nth-child(4) { transition-delay: 0.3s; }
+.fade-in:nth-child(2) {
+    transition-delay: 0.1s;
+}
+
+.fade-in:nth-child(3) {
+    transition-delay: 0.2s;
+}
+
+.fade-in:nth-child(4) {
+    transition-delay: 0.3s;
+}
 
 /* 左からスライドイン */
 .fade-in-left {
@@ -1575,13 +1609,28 @@ p:last-child {
 }
 
 /* 遅延クラス（汎用） */
-.delay-1 { transition-delay: 0.1s !important; }
-.delay-2 { transition-delay: 0.2s !important; }
-.delay-3 { transition-delay: 0.3s !important; }
-.delay-4 { transition-delay: 0.4s !important; }
-.delay-5 { transition-delay: 0.5s !important; }
+.delay-1 {
+    transition-delay: 0.1s !important;
+}
+
+.delay-2 {
+    transition-delay: 0.2s !important;
+}
+
+.delay-3 {
+    transition-delay: 0.3s !important;
+}
+
+.delay-4 {
+    transition-delay: 0.4s !important;
+}
+
+.delay-5 {
+    transition-delay: 0.5s !important;
+}
 
 @media (prefers-reduced-motion: reduce) {
+
     .section-head,
     .fade-in,
     .fade-in-left,
@@ -1601,18 +1650,37 @@ p:last-child {
    PAGE HERO ANIMATION
    ============================ */
 @keyframes pageHeroZoom {
-    0%   { transform: scale(1.1); }
-    100% { transform: scale(1); }
+    0% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }
 
 @keyframes pageHeroTitleIn {
-    0%   { opacity: 0; transform: translateY(20px); }
-    100% { opacity: 1; transform: translateY(0); }
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @keyframes pageHeroSubIn {
-    0%   { opacity: 0; letter-spacing: 0.6em; }
-    100% { opacity: 1; letter-spacing: 0.3em; }
+    0% {
+        opacity: 0;
+        letter-spacing: 0.6em;
+    }
+
+    100% {
+        opacity: 1;
+        letter-spacing: 0.3em;
+    }
 }
 
 .page-hero__bg {
@@ -1671,13 +1739,20 @@ p:last-child {
 
 .point-box:hover {
     transform: translateX(6px);
-    box-shadow: -3px 0 0 var(--color-primary), 2px 4px 16px rgba(0,0,0,0.08);
+    box-shadow: -3px 0 0 var(--color-primary), 2px 4px 16px rgba(0, 0, 0, 0.08);
 }
 
 /* cta-area のパルスアニメーション */
 @keyframes ctaPulse {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(204, 0, 0, 0.2); }
-    50%       { box-shadow: 0 0 0 12px rgba(204, 0, 0, 0); }
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(204, 0, 0, 0.2);
+    }
+
+    50% {
+        box-shadow: 0 0 0 12px rgba(204, 0, 0, 0);
+    }
 }
 
 .btn-standard {
@@ -1711,7 +1786,7 @@ p:last-child {
 
 .page-img-wrap:hover img {
     transform: scale(1.02);
-    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
 }
 
 /* ============================

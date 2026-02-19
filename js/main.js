@@ -179,11 +179,29 @@
     var contactForm = document.getElementById('contactForm');
     if (!contactForm) return;
 
+    // ページ読み込み時刻を記録（ボット対策）
+    var pageLoadTime = Date.now();
+
     // Google Apps ScriptのウェブアプリURL
     var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxGFZWP58Kg682MO3g3aiNI1IRd_6--8N5M6bcN8BaVF86uEpS4S4mtBqimTmUrurGS/exec';
 
     contactForm.addEventListener('submit', function (e) {
         e.preventDefault();
+
+        // --- ボット対策 1: ハニーポットチェック ---
+        var honeypot = contactForm.querySelector('input[name="hp_email"]');
+        if (honeypot && honeypot.value !== '') {
+            console.warn('Bot detected (honeypot)');
+            return; // 何もせず終了（または成功を装う）
+        }
+
+        // --- ボット対策 2: 送信時間チェック ---
+        var now = Date.now();
+        var submitTime = (now - pageLoadTime) / 1000;
+        if (submitTime < 3) { // 3秒以内はボットとみなす
+            alert('送信に失敗しました。もう一度お試しください。');
+            return;
+        }
 
         var submitBtn = contactForm.querySelector('.btn-submit');
         var originalBtnText = submitBtn.textContent;
@@ -195,29 +213,31 @@
         var formData = new FormData(contactForm);
         var data = {};
         formData.forEach(function (value, key) {
-            data[key] = value;
+            // ハニーポット項目は送信データから除外
+            if (key !== 'hp_email') {
+                data[key] = value;
+            }
         });
 
         // Google Apps Scriptへデータを送信
         fetch(SCRIPT_URL, {
             method: 'POST',
-            mode: 'no-cors', // CORSエラー回避のためno-corsを使用
+            mode: 'no-cors',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(data)
         })
             .then(function () {
-                // 送信成功（no-corsの場合はレスポンス内容は確認できませんが、送信は完了しています）
                 alert('お問い合わせありがとうございます。\n正常に送信されました。\n担当者より後ほどご連絡いたします。');
                 contactForm.reset();
+                pageLoadTime = Date.now(); // 再送信に備えてリセット
             })
             .catch(function (error) {
                 console.error('Error!', error.message);
                 alert('送信中にエラーが発生しました。お手数ですが、お電話にて直接ご連絡いただくか、しばらく経ってから再度お試しください。');
             })
             .finally(function () {
-                // ボタンを元の状態に戻す
                 submitBtn.disabled = false;
                 submitBtn.textContent = originalBtnText;
             });
