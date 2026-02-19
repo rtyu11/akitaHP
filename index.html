@@ -4,521 +4,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>有限会社 秋多運送 | Premium Logistics Service</title>
-    <meta name="description" content="品格と信頼に満ちた物流サービスを。秋多運送は、多摩地域を拠点に、最高品質の輸送と安全をお届けする運送会社です。">
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- CSS is importing fonts internally, but we keep this for preconnect -->
-
-    <!-- Favicon -->
-    <link rel="icon" href="images/logo.jpg">
-
-    <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-
-    <!-- CSS -->
+    <title>有限会社 秋多運送 ホームページ</title>
+    <meta name="description" content="東京都あきる野市の運送会社、秋多運送です。">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="images/logo.jpg">
 </head>
 
 <body>
+    <div class="wrapper-main">
+        <header class="header">
+            <div class="container">
+                <div class="logo-area">
+                    <h1>秋多運送</h1>
+                    <p class="sub-title">東京都あきる野市の運送会社</p>
+                </div>
+                <!-- Navigation -->
+                <nav class="nav-menu">
+                    <ul>
+                        <li><a href="index.html" class="active">ホーム</a></li>
+                        <li><a href="company.html">会社案内</a></li>
+                        <li><a href="service.html">事業内容</a></li>
+                        <li><a href="safety.html">安全への取組</a></li>
+                        <li><a href="recruit.html">採用情報</a></li>
+                        <li><a href="contact.html">お問い合わせ</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
 
-    <!-- Launcher/Loader -->
-    <div id="loader" class="loader">
-        <div class="loader-logo">AKITA UNSO</div>
+        <main class="main-content">
+            <!-- Main Visual -->
+            <div class="main-visual">
+                <img src="images/車両 (1).jpg" alt="秋多運送トラック">
+                <div class="visual-text">
+                    <h2>心で運ぶ、未来をつなぐ。</h2>
+                </div>
+            </div>
+
+            <!-- News / Info -->
+            <section class="section-content">
+                <h3>新着情報</h3>
+                <div class="news-box">
+                    <dl>
+                        <dt>2026.02.01</dt>
+                        <dd>ホームページをリニューアルしました。</dd>
+                        <dt>2026.01.15</dt>
+                        <dd>採用情報を更新しました。</dd>
+                    </dl>
+                </div>
+            </section>
+
+            <!-- Links -->
+            <section class="section-content">
+                <div class="top-banners">
+                    <a href="recruit.html" class="banner-link">
+                        <div class="banner-inner">
+                            <h3>ドライバー募集</h3>
+                            <p>未経験者歓迎！福利厚生充実</p>
+                        </div>
+                    </a>
+                    <a href="service.html" class="banner-link">
+                        <div class="banner-inner">
+                            <h3>事業案内</h3>
+                            <p>保有車両・サービスについて</p>
+                        </div>
+                    </a>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-info">
+                    <h4>有限会社 秋多運送</h4>
+                    <p>〒197-0811 東京都あきる野市市原小宮2-3-6</p>
+                    <p>TEL: 042-532-8256</p>
+                </div>
+                <p class="copyright">&copy; 2026 Akita Unso Co., Ltd. All Rights Reserved.</p>
+            </div>
+        </footer>
     </div>
-
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container nav-container">
-            <a href="#" class="logo">
-                <img src="images/logo.jpg" alt="秋多運送 Logo" class="logo-img">
-                <div class="logo-text">
-                    <span class="jp">秋多運送</span>
-                    <span class="en">PREMIUM LOGISTICS</span>
-                </div>
-            </a>
-
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">Philosophy</a></li>
-
-                <li><a href="#company">Company</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#safety-wellness">Safety & Health</a></li>
-                <li><a href="#recruit">Recruit</a></li>
-                <li><a href="#contact" class="btn-contact-nav">Contact</a></li>
-            </ul>
-
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-bg-wrapper">
-            <img src="images/車両 (1).jpg" alt="Hero Background" class="hero-bg-img">
-            <div class="hero-overlay"></div>
-        </div>
-
-        <div class="hero-content">
-            <h1 class="hero-catchphrase">
-                心で運ぶ、<br>
-                未来をつなぐ。
-            </h1>
-        </div>
-
-        <div class="scroll-icon-wrapper">
-            <div class="scroll-text en-font" style="font-size: 0.8rem; letter-spacing: 0.2em; margin-bottom: 0.5rem;">
-                SCROLL</div>
-            <div class="mouse-icon">
-                <div class="mouse-wheel"></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="section about">
-        <div class="container wrapper">
-            <div class="section-header">
-                <span class="section-tag">Corporate Philosophy</span>
-                <h2 class="section-title">調和と豊かさの追求</h2>
-            </div>
-
-            <div class="about-layout">
-                <div class="about-content">
-                    <p class="lead-text">
-                        地域に根ざし、<br>
-                        心豊かな時間と空間を創造する。
-                    </p>
-                    <p class="body-text">
-                        昭和48年の創業以来、東京の西多摩という豊かな自然に恵まれた地で、私たちは運送業を営んでまいりました。
-                        澄んだ空気と四季折々の風景の中で育まれたのは、単なる輸送技術だけではありません。<br><br>
-                        日常業務を終え、営業所に戻った瞬間に感じる、ゆったりとした時間と安らぎ。
-                        この「心の余裕」こそが、安全運転を生み出し、ひいてはお客様への最高品質のサービスへと繋がると私たちは信じています。<br><br>
-                        従業員一人ひとりが、物心ともに満たされた生活を送ること。
-                        それが社会との調和を生み、秋多運送の誇り高い企業文化を形成しています。
-                    </p>
-
-                    <div class="stats-grid">
-                        <div class="stat-item">
-                            <div class="stat-num">50+</div>
-                            <div class="stat-label">Years of History</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-num">20+</div>
-                            <div class="stat-label">Expert Drivers</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-num">100%</div>
-                            <div class="stat-label">Dedication</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="about-img-group">
-                    <img src="images/about-img.jpg" alt="Office Atmosphere" class="about-main-img">
-                    <img src="images/風景 (3).jpg" alt="Nature of Nishitama" class="about-sub-img">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Fleet / Gallery Section -->
-    <section id="services" class="section fleet">
-        <div class="container wrapper">
-            <div class="section-header">
-                <span class="section-tag">Our Fleet</span>
-                <h2 class="section-title">高品位な輸送車両</h2>
-                <p class="section-desc">多様なニーズに応える最新の車両ラインナップ。常に美しく整備された車両は、私たちの誇りです。</p>
-            </div>
-
-            <div class="fleet-gallery">
-                <div class="fleet-card">
-                    <img src="images/11920_0.jpg" alt="Large Wing Truck">
-                    <div class="fleet-info">
-                        <div class="fleet-name">大型ウイング車</div>
-                        <p class="fleet-desc">13t積載 / エアサス装備</p>
-                    </div>
-                </div>
-                <div class="fleet-card">
-                    <img src="images/車両 (2).jpg" alt="Medium Truck">
-                    <div class="fleet-info">
-                        <div class="fleet-name">4t ウイング車</div>
-                        <p class="fleet-desc">パワーゲート搭載</p>
-                    </div>
-                </div>
-                <div class="fleet-card">
-                    <img src="images/車両ロゴ.jpg" alt="Logo Detail">
-                    <div class="fleet-info">
-                        <div class="fleet-name">ブランドロゴ</div>
-                        <p class="fleet-desc">信頼の証</p>
-                    </div>
-                </div>
-                <div class="fleet-card">
-                    <img src="images/車両1.jpg" alt="Truck Fleet Lineup">
-                    <div class="fleet-info">
-                        <div class="fleet-name">車両ラインナップ</div>
-                        <p class="fleet-desc">多様な車種を保有</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Fleet List -->
-            <div class="fleet-list-container animate-on-scroll">
-                <h3 class="fleet-list-title">車両保有台数</h3>
-                <ul class="fleet-list">
-                    <li>
-                        <span class="fleet-type">大型ウイング (13t)</span>
-                        <div class="fleet-count-wrapper">
-                            <span class="fleet-count" data-target="6">0</span>
-                            <span class="unit">台</span>
-                        </div>
-                    </li>
-                    <li>
-                        <span class="fleet-type">増トンウイング (7t PG)</span>
-                        <div class="fleet-count-wrapper">
-                            <span class="fleet-count" data-target="2">0</span>
-                            <span class="unit">台</span>
-                        </div>
-                    </li>
-                    <li>
-                        <span class="fleet-type">中型ウイング (4t PG)</span>
-                        <div class="fleet-count-wrapper">
-                            <span class="fleet-count" data-target="11">0</span>
-                            <span class="unit">台</span>
-                        </div>
-                    </li>
-                    <li>
-                        <span class="fleet-type">中型ドライバン (4t PG)</span>
-                        <div class="fleet-count-wrapper">
-                            <span class="fleet-count" data-target="2">0</span>
-                            <span class="unit">台</span>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Overview -->
-    <section class="section features">
-        <div class="container wrapper">
-            <div class="features-grid">
-                <div class="feature-box">
-                    <i class="fas fa-gem feature-icon"></i>
-                    <h3 class="feature-title">丁寧な荷扱い</h3>
-                    <p class="body-text" style="margin-bottom: 0;">
-                        お客様の商品を「物」としてではなく「価値」として扱います。熟練のドライバーが、積み込みから荷降ろしまで細心の注意を払います。</p>
-                </div>
-                <div class="feature-box">
-                    <i class="fas fa-shield-alt feature-icon"></i>
-                    <h3 class="feature-title">安全・確実な輸送</h3>
-                    <p class="body-text" style="margin-bottom: 0;">
-                        お客様の大切なお荷物を、経験豊富なドライバーが責任を持ってお届けします。基本に忠実な安全運行で、確かな信頼を築いています。</p>
-                </div>
-                <div class="feature-box">
-                    <i class="fas fa-clock feature-icon"></i>
-                    <h3 class="feature-title">正確な定時運行</h3>
-                    <p class="body-text" style="margin-bottom: 0;">
-                        プロフェッショナルとして、時間は約束です。ゆとりのある運行計画と的確なルート選定で、遅延のない輸送を実現します。</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Safety & Wellness Section (Merged) -->
-    <section id="safety-wellness" class="section safety-wellness">
-        <div class="safety-bg-wrapper">
-            <div class="safety-overlay"></div>
-        </div>
-        <div class="container wrapper">
-            <div class="section-header">
-                <span class="section-tag">Safety & Well-being</span>
-                <h2 class="section-title sw-title-green">安全と食への約束</h2>
-                <p class="section-desc">
-                    安全な運行は、心身の健康から。<br>
-                    秋多運送は、車両の整備からドライバーの食生活まで、独自の視点で「真の安全」を追求しています。
-                </p>
-            </div>
-
-            <div class="safety-wellness-grid">
-                <!-- 1. Vehicle -->
-                <div class="sw-card">
-                    <div class="sw-icon"><i class="fas fa-truck-moving"></i></div>
-                    <h3>徹底した車両整備</h3>
-                    <p>自社整備基準による日常点検と、専門家による定期メンテナンスを徹底。常に万全の車両状態で、安全輸送を支えます。</p>
-                </div>
-
-                <!-- 3. Food & Health -->
-                <div class="sw-card">
-                    <div class="sw-icon"><i class="fas fa-utensils"></i></div>
-                    <h3>食と健康の取り組み</h3>
-                    <p>「食べることは生きること」。禁煙者への「おやつ代支給」や食育など、楽しみながら健康になれる独自の制度を導入しています。</p>
-                </div>
-
-                <!-- 4. Environment -->
-                <div class="sw-card">
-                    <div class="sw-icon"><i class="fas fa-smile-beam"></i></div>
-                    <h3>働きやすい環境づくり</h3>
-                    <p>無理のない運行スケジュールと十分な休息を確保。心にゆとりを持って働ける環境が、安全運転につながります。</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Recruitment Information -->
-    <section id="recruit" class="section recruit"
-        style="background: linear-gradient(135deg, #fff5f5 0%, #ffebee 100%);">
-        <div class="container wrapper">
-            <div class="section-header">
-                <span class="section-tag"
-                    style="background: rgba(220, 20, 60, 0.1); border-color: var(--primary-color);">Recruitment</span>
-                <h2 class="section-title" style="transform: scale(1.1);">求人募集要項</h2>
-                <p class="section-desc">
-                    年齢不問【普通自動車運転免許以上お持ちの方】<br>
-                    ★免許・資格取得応援制度新設！面接時にご相談ください
-                </p>
-            </div>
-
-            <div class="recruit-grid">
-                <!-- Requirements & Target -->
-                <div class="recruit-box animate-on-scroll">
-                    <h3 class="recruit-box-title"><i class="fas fa-users"></i> 求める人材</h3>
-                    <ul class="recruit-list">
-                        <li><i class="fas fa-check"></i> 体力に自信のある方</li>
-                        <li><i class="fas fa-truck"></i> トラックが好きな方</li>
-                        <li><i class="fas fa-heart"></i> 禁煙＝健康促進手当・おやつ代支給</li>
-                    </ul>
-                </div>
-
-                <!-- Benefits -->
-                <div class="recruit-box animate-on-scroll delay-100">
-                    <h3 class="recruit-box-title"><i class="fas fa-hand-holding-heart"></i> 充実の待遇・福利厚生</h3>
-                    <ul class="recruit-list two-col">
-                        <li><i class="fas fa-check-circle"></i> 社会保険完備</li>
-                        <li><i class="fas fa-home"></i> 社宅あり</li>
-                        <li><i class="fas fa-bus"></i> 交通費全額支給</li>
-                        <li><i class="fas fa-user-friends"></i> 家族手当</li>
-                        <li><i class="fas fa-soap"></i> 洗車手当</li>
-                        <li><i class="fas fa-heartbeat"></i> 健康促進手当あり</li>
-                        <li><i class="fas fa-clock"></i> 残業40時間以内厳守</li>
-                        <li><i class="fas fa-calendar-alt"></i> 実出勤日数月21日</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Salary Table -->
-            <div class="salary-section animate-on-scroll delay-200"
-                style="border-top: 5px solid var(--primary-color); box-shadow: 0 10px 40px rgba(220, 20, 60, 0.15);">
-                <h3 class="salary-title" style="font-weight: 800; color: var(--primary-dark);">給与体系 SALARY</h3>
-                <div class="salary-table-wrapper">
-                    <table class="salary-table">
-                        <thead>
-                            <tr>
-                                <th>職種</th>
-                                <th>ルート配送</th>
-                                <th>内勤</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th class="row-header">大型ドライバー</th>
-                                <td class="highlight-cell">Max 450,000</td>
-                                <td>日給 12,000</td>
-                            </tr>
-                            <tr>
-                                <th class="row-header">中型ドライバー</th>
-                                <td class="highlight-cell">Max 390,000</td>
-                                <td>日給 12,000</td>
-                            </tr>
-                            <tr>
-                                <th class="row-header">小型ドライバー</th>
-                                <td class="highlight-cell">Max 340,000</td>
-                                <td>日給 12,000</td>
-                            </tr>
-                            <tr>
-                                <th class="row-header">配車オペレーター</th>
-                                <td>スポット1回 20,000</td>
-                                <td class="highlight-cell">月給 360,000</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-
-
-    <!-- Company Profile -->
-    <section id="company" class="section company">
-        <div class="container wrapper">
-            <div class="section-header">
-                <span class="section-tag">Profile</span>
-                <h2 class="section-title">会社概要</h2>
-            </div>
-
-            <div class="company-layout">
-                <div class="about-content animate-on-scroll">
-                    <table style="width: 100%; border-collapse: collapse;">
-                        <tr style="border-bottom: 1px solid #e2e8f0;">
-                            <th style="text-align: left; padding: 1.5rem; color: var(--secondary-color); width: 30%;">
-                                会社名
-                            </th>
-                            <td style="padding: 1.5rem; color: var(--text-light);">有限会社 秋多運送</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid #e2e8f0;">
-                            <th style="text-align: left; padding: 1.5rem; color: var(--secondary-color);">代表者</th>
-                            <td style="padding: 1.5rem; color: var(--text-light);">代表取締役　岡部 達也</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid #e2e8f0;">
-                            <th style="text-align: left; padding: 1.5rem; color: var(--secondary-color);">所在地</th>
-                            <td style="padding: 1.5rem; color: var(--text-light);">〒197-0811 東京都あきる野市市原小宮2-3-6</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid #e2e8f0;">
-                            <th style="text-align: left; padding: 1.5rem; color: var(--secondary-color);">設立</th>
-                            <td style="padding: 1.5rem; color: var(--text-light);">昭和48年4月10日</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid #e2e8f0;">
-                            <th style="text-align: left; padding: 1.5rem; color: var(--secondary-color);">主要取引先</th>
-                            <td style="padding: 1.5rem; color: var(--text-light);">ヤマト運輸株式会社<br>マタイ紙工株式会社 秋川工場</td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="company-img animate-on-scroll">
-                    <img src="images/11912_0.jpg" alt="Office Facility">
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- Contact Section -->
-    <section id="contact" class="section contact" style="padding-top: 4rem;">
-        <div class="contact-bg-wrapper">
-            <img src="images/11909_0.jpg" alt="Contact Background" class="contact-bg-img">
-            <div class="contact-overlay-dark"></div>
-        </div>
-        <div class="container wrapper">
-
-            <div class="contact-cta animate-on-scroll">
-                <h2 class="cta-title">Apply Now</h2>
-                <p class="cta-text">
-                    あなたの力が、秋多運送の新しいエンジンになる。<br>
-                    まずは下記フォームより、お気軽にご連絡ください。
-                </p>
-                <i class="fas fa-chevron-down cta-arrow"></i>
-            </div>
-
-            <div class="contact-wrapper highlight-form">
-                <div class="form-header">
-                    <h3><i class="far fa-envelope"></i> エントリー・お問い合わせフォーム</h3>
-                    <p>3営業日以内に担当者よりご連絡いたします。</p>
-                </div>
-                <form id="contactForm">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="name">お名前 <span style="color: var(--primary-color);">*</span></label>
-                            <input type="text" id="name" name="name" class="form-control" placeholder="例：秋多 太郎"
-                                required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">メールアドレス <span style="color: var(--primary-color);">*</span></label>
-                            <input type="email" id="email" name="email" class="form-control"
-                                placeholder="example@akita-unso.com" required>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label>お問い合わせ種別</label>
-                        <div class="radio-group">
-                            <label class="radio-label">
-                                <input type="radio" name="type" value="求人" checked>
-                                <span class="radio-custom"></span>
-                                <span class="radio-text">採用について</span>
-                            </label>
-                            <label class="radio-label">
-                                <input type="radio" name="type" value="取引">
-                                <span class="radio-custom"></span>
-                                <span class="radio-text">配送依頼・お取引</span>
-                            </label>
-                            <label class="radio-label">
-                                <input type="radio" name="type" value="その他">
-                                <span class="radio-custom"></span>
-                                <span class="radio-text">その他</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="message">お問い合わせ内容 <span style="color: var(--primary-color);">*</span></label>
-                        <textarea id="message" name="message" rows="5" class="form-control"
-                            placeholder="ご質問、面接希望日時などをご記入ください。" required></textarea>
-                    </div>
-
-                    <div class="caution-box">
-                        <i class="fas fa-exclamation-circle"></i>
-                        <span>営業・勧誘のお電話やメールは、業務の妨げとなりますので固くお断りいたします。</span>
-                    </div>
-
-                    <button type="submit" class="btn-submit">
-                        送信する <i class="fas fa-paper-plane"></i>
-                    </button>
-                    <p id="formStatus" style="text-align: center; margin-top: 1rem;"></p>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <h2>有限会社 秋多運送</h2>
-                    <p>
-                        〒197-0811 東京都あきる野市市原小宮2-3-6<br>
-                        TEL: 042-532-8256
-                    </p>
-                </div>
-                <div class="footer-links">
-                    <a href="#about">Philosophy</a>
-                    <a href="#company">Company</a>
-                    <a href="#services">Services</a>
-                    <a href="#recruit">Recruit</a>
-                    <a href="#contact">Contact</a>
-                </div>
-                <!-- SNS Icons (Visual Only) -->
-                <div class="footer-social">
-                    <div class="social-icon" aria-label="Instagram">
-                        <i class="fab fa-instagram"></i>
-                    </div>
-                    <div class="social-icon" aria-label="X (Twitter)">
-                        <i class="fab fa-x-twitter"></i>
-                    </div>
-                    <div class="social-icon" aria-label="Facebook">
-                        <i class="fab fa-facebook-f"></i>
-                    </div>
-                    <div class="social-icon" aria-label="LINE">
-                        <i class="fab fa-line"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Akita Unso Co., Ltd. All Rights Reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Scripts -->
-    <script src="js/main.js"></script>
 </body>
 
 </html>
