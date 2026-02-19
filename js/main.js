@@ -31,13 +31,25 @@
 // ============================
 (function () {
     var slides = document.querySelectorAll('.hero-slide');
-    var dots = document.querySelectorAll('.hero-dot');
+    var dots   = document.querySelectorAll('.hero-dot');
 
     if (slides.length === 0) return;
 
-    var current = 0;
+    var current  = 0;
     var INTERVAL = 5000;
     var timer;
+
+    // CSS animation の再トリガー: animation='none' → reflow → animation='' で確実にリセット
+    function resetSlideAnimation(slide) {
+        var targets = slide.querySelectorAll(
+            '.hero-slide__img, .hero-caption__sub, .hero-caption__main'
+        );
+        targets.forEach(function (el) {
+            el.style.animation = 'none';
+            el.offsetWidth; // DOM reflow を強制（消してはいけない）
+            el.style.animation = '';
+        });
+    }
 
     function goTo(index) {
         slides[current].classList.remove('is-active');
@@ -45,30 +57,43 @@
 
         current = (index + slides.length) % slides.length;
 
+        resetSlideAnimation(slides[current]);
         slides[current].classList.add('is-active');
         if (dots[current]) dots[current].classList.add('is-active');
     }
 
     function startTimer() {
-        timer = setInterval(function () {
-            goTo(current + 1);
-        }, INTERVAL);
+        timer = setInterval(function () { goTo(current + 1); }, INTERVAL);
     }
 
-    function resetTimer() {
-        clearInterval(timer);
-        startTimer();
-    }
+    function resetTimer() { clearInterval(timer); startTimer(); }
 
     // ドットクリックで手動切り替え
     dots.forEach(function (dot, i) {
-        dot.addEventListener('click', function () {
-            goTo(i);
-            resetTimer();
-        });
+        dot.addEventListener('click', function () { goTo(i); resetTimer(); });
     });
 
     startTimer();
+})();
+
+// ============================
+// スクロールフェードイン
+// ============================
+(function () {
+    if (!('IntersectionObserver' in window)) return;
+    var targets = document.querySelectorAll('.section-head, .fade-in');
+    if (targets.length === 0) return;
+
+    var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15 });
+
+    targets.forEach(function (el) { observer.observe(el); });
 })();
 
 // ============================
