@@ -1174,7 +1174,7 @@ p:last-child {
     display: block;
     flex-shrink: 0;
     border-radius: 3px;
-    background-color: #fff;
+    background-color: #c0392b;
     padding: 3px 6px;
 }
 
