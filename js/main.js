@@ -105,15 +105,17 @@
 // スクロールフェードイン
 // ============================
 (function () {
+    var selector = '.section-head, .fade-in, .fade-in-left, .fade-in-right, .fade-in-scale';
+
     if (!('IntersectionObserver' in window)) {
         // フォールバック: 全要素を表示
-        document.querySelectorAll('.section-head, .fade-in').forEach(function (el) {
+        document.querySelectorAll(selector).forEach(function (el) {
             el.classList.add('is-visible');
         });
         return;
     }
 
-    var targets = document.querySelectorAll('.section-head, .fade-in');
+    var targets = document.querySelectorAll(selector);
     if (targets.length === 0) return;
 
     var observer = new IntersectionObserver(function (entries) {

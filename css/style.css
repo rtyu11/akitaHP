@@ -1536,13 +1536,189 @@ p:last-child {
 .fade-in:nth-child(3) { transition-delay: 0.2s; }
 .fade-in:nth-child(4) { transition-delay: 0.3s; }
 
+/* 左からスライドイン */
+.fade-in-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in-left.is-visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* 右からスライドイン */
+.fade-in-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in-right.is-visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* スケールアップ（画像用） */
+.fade-in-scale {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.85s ease, transform 0.85s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.fade-in-scale.is-visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* 遅延クラス（汎用） */
+.delay-1 { transition-delay: 0.1s !important; }
+.delay-2 { transition-delay: 0.2s !important; }
+.delay-3 { transition-delay: 0.3s !important; }
+.delay-4 { transition-delay: 0.4s !important; }
+.delay-5 { transition-delay: 0.5s !important; }
+
 @media (prefers-reduced-motion: reduce) {
     .section-head,
-    .fade-in {
+    .fade-in,
+    .fade-in-left,
+    .fade-in-right,
+    .fade-in-scale {
         opacity: 1;
         transform: none;
         transition: none;
     }
+
+    .page-hero__bg,
+    .page-hero__title,
+    .page-hero__title small {
+        animation: none;
+        opacity: 1;
+    }
+}
+
+/* ============================
+   PAGE HERO ANIMATION
+   ============================ */
+@keyframes pageHeroZoom {
+    0%   { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+@keyframes pageHeroTitleIn {
+    0%   { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pageHeroSubIn {
+    0%   { opacity: 0; letter-spacing: 0.6em; }
+    100% { opacity: 1; letter-spacing: 0.3em; }
+}
+
+.page-hero__bg {
+    animation: pageHeroZoom 1.2s ease forwards;
+}
+
+.page-hero__title small {
+    animation: pageHeroSubIn 0.8s ease 0.3s both;
+}
+
+.page-hero__title {
+    animation: pageHeroTitleIn 0.8s ease 0.5s both;
+}
+
+/* ============================
+   SUBPAGE CONTENT ANIMATIONS
+   ============================ */
+/* h3見出しのラインアニメーション */
+.page-content h3 {
+    position: relative;
+    overflow: hidden;
+}
+
+.page-content h3::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 3px;
+    height: 0;
+    background-color: var(--color-primary);
+    transition: height 0.4s ease;
+}
+
+/* テーブル行のホバーエフェクト */
+.common-table tr {
+    transition: background-color 0.25s ease;
+}
+
+.common-table tr:hover td,
+.common-table tr:hover th {
+    background-color: rgba(204, 0, 0, 0.04);
+}
+
+/* fleet-item 画像ホバー */
+.fleet-item {
+    overflow: hidden;
+}
+
+.fleet-item img {
+    transition: transform 0.5s ease;
+}
+
+.fleet-item:hover img {
+    transform: scale(1.03);
+}
+
+/* point-box ホバーエフェクト */
+.point-box {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.point-box:hover {
+    transform: translateX(6px);
+    box-shadow: -3px 0 0 var(--color-primary), 2px 4px 16px rgba(0,0,0,0.08);
+}
+
+/* cta-area のパルスアニメーション */
+@keyframes ctaPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(204, 0, 0, 0.2); }
+    50%       { box-shadow: 0 0 0 12px rgba(204, 0, 0, 0); }
+}
+
+.btn-standard {
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.btn-standard:hover {
+    background-color: var(--color-primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(204, 0, 0, 0.35);
+}
+
+/* about-image オーバーレイ効果 */
+.about-image {
+    position: relative;
+    overflow: hidden;
+}
+
+.about-image img {
+    transition: transform 0.7s ease;
+}
+
+.about-image:hover img {
+    transform: scale(1.04);
+}
+
+/* page-img-wrap ホバー */
+.page-img-wrap img {
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.page-img-wrap:hover img {
+    transform: scale(1.02);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
 }
 
 /* ============================
