@@ -1,6 +1,33 @@
 'use strict';
 
 // ============================
+// ヘッダー スクロール制御
+// ============================
+(function () {
+    var header = document.getElementById('site-header');
+    if (!header) return;
+
+    // サブページ判定（hero-slider がなければサブページ）
+    var isTopPage = !!document.querySelector('.hero-slider');
+
+    if (!isTopPage) {
+        header.classList.add('is-subpage');
+        return;
+    }
+
+    function onScroll() {
+        if (window.scrollY > 60) {
+            header.classList.add('is-scrolled');
+        } else {
+            header.classList.remove('is-scrolled');
+        }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+})();
+
+// ============================
 // ハンバーガーメニュー
 // ============================
 (function () {
@@ -36,17 +63,16 @@
     if (slides.length === 0) return;
 
     var current  = 0;
-    var INTERVAL = 5000;
+    var INTERVAL = 6000;
     var timer;
 
-    // CSS animation の再トリガー: animation='none' → reflow → animation='' で確実にリセット
     function resetSlideAnimation(slide) {
         var targets = slide.querySelectorAll(
             '.hero-slide__img, .hero-caption__sub, .hero-caption__main'
         );
         targets.forEach(function (el) {
             el.style.animation = 'none';
-            el.offsetWidth; // DOM reflow を強制（消してはいけない）
+            el.offsetWidth; // reflow
             el.style.animation = '';
         });
     }
@@ -68,7 +94,6 @@
 
     function resetTimer() { clearInterval(timer); startTimer(); }
 
-    // ドットクリックで手動切り替え
     dots.forEach(function (dot, i) {
         dot.addEventListener('click', function () { goTo(i); resetTimer(); });
     });
@@ -80,7 +105,14 @@
 // スクロールフェードイン
 // ============================
 (function () {
-    if (!('IntersectionObserver' in window)) return;
+    if (!('IntersectionObserver' in window)) {
+        // フォールバック: 全要素を表示
+        document.querySelectorAll('.section-head, .fade-in').forEach(function (el) {
+            el.classList.add('is-visible');
+        });
+        return;
+    }
+
     var targets = document.querySelectorAll('.section-head, .fade-in');
     if (targets.length === 0) return;
 
@@ -91,7 +123,7 @@
                 observer.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.15 });
+    }, { threshold: 0.12 });
 
     targets.forEach(function (el) { observer.observe(el); });
 })();
@@ -104,7 +136,7 @@
     var counters = document.querySelectorAll('.vehicle-item__num[data-target]');
     if (counters.length === 0) return;
 
-    var DURATION = 1200; // ms
+    var DURATION = 1400;
 
     function animateCount(el) {
         var target = parseInt(el.getAttribute('data-target'), 10);
@@ -115,7 +147,6 @@
         function step(timestamp) {
             if (!startTime) startTime = timestamp;
             var progress = Math.min((timestamp - startTime) / DURATION, 1);
-            // easeOutCubic
             var eased = 1 - Math.pow(1 - progress, 3);
             numEl.textContent = Math.round(eased * target);
             if (progress < 1) {
