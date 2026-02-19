@@ -1914,7 +1914,12 @@ p:last-child {
     }
 
     .site-logo-text {
-        display: none;
+        font-size: 12px;
+        letter-spacing: 0.02em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: calc(100vw - 140px);
     }
 
     .logo-img {
