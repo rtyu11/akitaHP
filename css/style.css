@@ -1592,11 +1592,8 @@ p:last-child {
         transition: none;
     }
 
-    .page-hero__bg,
-    .page-hero__title,
-    .page-hero__title small {
+    .page-hero__bg {
         animation: none;
-        opacity: 1;
     }
 }
 
@@ -1622,13 +1619,7 @@ p:last-child {
     animation: pageHeroZoom 1.2s ease forwards;
 }
 
-.page-hero__title small {
-    animation: pageHeroSubIn 0.8s ease 0.3s both;
-}
-
-.page-hero__title {
-    animation: pageHeroTitleIn 0.8s ease 0.5s both;
-}
+/* page-hero タイトルは常時表示（アニメーションはprefers-reduced-motionの考慮も含め削除） */
 
 /* ============================
    SUBPAGE CONTENT ANIMATIONS
