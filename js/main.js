@@ -97,6 +97,49 @@
 })();
 
 // ============================
+// 保有台数 カウントアップ
+// ============================
+(function () {
+    if (!('IntersectionObserver' in window)) return;
+    var counters = document.querySelectorAll('.vehicle-item__num[data-target]');
+    if (counters.length === 0) return;
+
+    var DURATION = 1200; // ms
+
+    function animateCount(el) {
+        var target = parseInt(el.getAttribute('data-target'), 10);
+        var numEl = el.querySelector('.count-num');
+        if (!numEl) return;
+        var startTime = null;
+
+        function step(timestamp) {
+            if (!startTime) startTime = timestamp;
+            var progress = Math.min((timestamp - startTime) / DURATION, 1);
+            // easeOutCubic
+            var eased = 1 - Math.pow(1 - progress, 3);
+            numEl.textContent = Math.round(eased * target);
+            if (progress < 1) {
+                requestAnimationFrame(step);
+            } else {
+                numEl.textContent = target;
+            }
+        }
+        requestAnimationFrame(step);
+    }
+
+    var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+                animateCount(entry.target);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.3 });
+
+    counters.forEach(function (el) { observer.observe(el); });
+})();
+
+// ============================
 // コンタクトフォーム
 // ============================
 (function () {

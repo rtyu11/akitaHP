@@ -453,7 +453,7 @@ p:last-child {
 }
 
 .contents-card:hover::before {
-    background-color: rgba(204, 0, 0, 0.55);
+    background-color: rgba(0, 0, 0, 0.65);
 }
 
 .contents-card__bg {
@@ -861,6 +861,10 @@ p:last-child {
         display: none;
     }
 
+    .header-right {
+        display: none;
+    }
+
     .hamburger {
         display: flex;
     }
@@ -1023,14 +1027,14 @@ p:last-child {
     display: flex;
     gap: 12px;
     padding: 16px 24px;
-    border-top: 1px solid #333;
+    border-top: 1px solid #8b0000;
 }
 
 .sp-nav-sns .sns-link {
     width: 36px;
     height: 36px;
-    background-color: #333;
-    color: #aaa;
+    background-color: #8b0000;
+    color: #ffd0d0;
     border-radius: 50%;
 }
 
@@ -1043,8 +1047,8 @@ p:last-child {
    FOOTER 再デザイン
    ============================ */
 .site-footer {
-    background-color: #1a1a1a;
-    color: #ccc;
+    background-color: #8b0000;
+    color: #ffd0d0;
     padding: 60px 20px 0;
     text-align: left;
 }
@@ -1060,7 +1064,7 @@ p:last-child {
     align-items: flex-start;
     gap: 60px;
     padding-bottom: 50px;
-    border-bottom: 1px solid #2e2e2e;
+    border-bottom: 1px solid #6a0000;
 }
 
 .footer-logo-wrap {
@@ -1084,7 +1088,7 @@ p:last-child {
 
 .footer-address {
     font-size: 13px;
-    color: #888;
+    color: #ffb0b0;
     line-height: 2;
     margin-bottom: 20px;
 }
@@ -1094,7 +1098,7 @@ p:last-child {
 }
 
 .footer-address a {
-    color: #999;
+    color: #ffb0b0;
 }
 
 .footer-sns {
@@ -1105,8 +1109,8 @@ p:last-child {
 .footer-sns .sns-link {
     width: 38px;
     height: 38px;
-    background-color: #2e2e2e;
-    color: #888;
+    background-color: #6a0000;
+    color: #ffd0d0;
     border-radius: 50%;
 }
 
@@ -1130,7 +1134,7 @@ p:last-child {
 
 .footer-nav-col ul li a {
     font-size: 13px;
-    color: #888;
+    color: #ffb0b0;
     transition: color 0.2s;
     letter-spacing: 0.03em;
 }
@@ -1146,7 +1150,7 @@ p:last-child {
 
 .footer-copyright {
     font-size: 11px;
-    color: #555;
+    color: #ffaaaa;
     margin: 0;
     border-top: none;
     padding-top: 0;
