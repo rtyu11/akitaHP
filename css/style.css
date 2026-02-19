@@ -6,8 +6,8 @@
 :root {
     --color-primary: #cc0000;
     --color-primary-dark: #a00000;
-    --color-header-bg: #1a1a1a;
-    --color-header-bg-scroll: rgba(26, 26, 26, 0.97);
+    --color-header-bg: #c0392b;
+    --color-header-bg-scroll: rgba(192, 57, 43, 0.97);
     --color-text: #333;
     --color-text-light: #666;
     --color-text-muted: #999;
@@ -1174,7 +1174,7 @@ p:last-child {
     display: block;
     flex-shrink: 0;
     border-radius: 3px;
-    background-color: #c0392b;
+    background-color: #fff;
     padding: 3px 6px;
 }
 
