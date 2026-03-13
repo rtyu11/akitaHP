@@ -2262,7 +2262,7 @@ p:last-child {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    /* スマホでは合計を普通のマスに戻す */
+    /* スマホでは合計を普通のマスに戻す＋ダーク背景で区別 */
     .vehicle-item--total {
         grid-column: auto;
         display: block;
@@ -2271,17 +2271,25 @@ p:last-child {
         border-top: none;
         justify-content: unset;
         gap: unset;
+        background-color: var(--color-bg-dark, #1a1a1a);
     }
 
     .vehicle-item--total .vehicle-item__num {
         font-size: clamp(44px, 5.5vw, 70px);
         margin-bottom: 12px;
         display: block;
+        color: #fff;
+    }
+
+    .vehicle-item--total .vehicle-item__unit {
+        color: rgba(255, 255, 255, 0.6);
     }
 
     .vehicle-item--total .vehicle-item__label {
         order: 0;
         font-size: 11px;
+        color: rgba(255, 255, 255, 0.5);
+        letter-spacing: 0.25em;
     }
 
     .footer-nav-area {
