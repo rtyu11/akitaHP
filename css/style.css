@@ -838,6 +838,7 @@ p:last-child {
     font-size: 18px;
     margin-bottom: 0;
     display: inline;
+    color: #555;
 }
 
 .vehicle-item--total .vehicle-item__label {
@@ -2262,7 +2263,7 @@ p:last-child {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    /* スマホでは合計を普通のマスに戻す＋薄いグレー背景で区別 */
+    /* スマホ：背景は他と同じ白、文字だけ濃いグレーで区別 */
     .vehicle-item--total {
         grid-column: auto;
         display: block;
@@ -2271,24 +2272,24 @@ p:last-child {
         border-top: none;
         justify-content: unset;
         gap: unset;
-        background-color: var(--color-bg-gray, #f5f5f5);
+        background-color: var(--color-bg);
     }
 
     .vehicle-item--total .vehicle-item__num {
         font-size: clamp(44px, 5.5vw, 70px);
         margin-bottom: 12px;
         display: block;
-        color: var(--color-text, #333);
+        color: #555; /* 濃いグレー */
     }
 
     .vehicle-item--total .vehicle-item__unit {
-        color: var(--color-text-muted, #777);
+        color: #777;
     }
 
     .vehicle-item--total .vehicle-item__label {
         order: 0;
         font-size: 11px;
-        color: var(--color-text-muted, #777);
+        color: #888;
         letter-spacing: 0.25em;
     }
 
