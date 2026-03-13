@@ -822,9 +822,19 @@ p:last-child {
     line-height: 1.6;
 }
 
+.vehicle-item--total {
+    background-color: var(--color-bg-gray, #f5f5f5);
+    border-top: 2px solid var(--color-primary);
+}
+
+.vehicle-item--total .vehicle-item__num {
+    color: var(--color-text, #222);
+}
+
 .vehicle-link-wrap {
     text-align: center;
 }
+
 
 /* ============================
    CONTENTS GRID SECTION
