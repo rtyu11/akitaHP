@@ -822,13 +822,35 @@ p:last-child {
     line-height: 1.6;
 }
 
-.vehicle-item--total {
-    background-color: var(--color-bg-gray, #f5f5f5);
-    border-top: 2px solid var(--color-primary);
+.vehicle-total-bar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 10px 20px;
+    margin-bottom: 32px;
+    border-top: 1px solid var(--color-border);
+    color: var(--color-text-muted);
 }
 
-.vehicle-item--total .vehicle-item__num {
-    color: var(--color-text, #222);
+.vehicle-total-bar__label {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+.vehicle-total-bar__num {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--color-text);
+    letter-spacing: 0.05em;
+}
+
+/* vehicle-item__num の大きなfont-sizeをバーでは上書き */
+.vehicle-total-bar .vehicle-item__num {
+    font-size: 15px;
+    margin-bottom: 0;
+    display: inline;
 }
 
 .vehicle-link-wrap {
