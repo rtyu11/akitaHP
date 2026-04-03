@@ -183,7 +183,7 @@
     var pageLoadTime = Date.now();
 
     // Google Apps ScriptのウェブアプリURL
-    var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxGFZWP58Kg682MO3g3aiNI1IRd_6--8N5M6bcN8BaVF86uEpS4S4mtBqimTmUrurGS/exec';
+    var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxaM_egDQ1oQjhzPUAsafV0wYrd1Ib6H2ewxhbCR7g8PWYVAUGyBUoVWiyecBSBSxZi/exec';
 
     contactForm.addEventListener('submit', function (e) {
         e.preventDefault();

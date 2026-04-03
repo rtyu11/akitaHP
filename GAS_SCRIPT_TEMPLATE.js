@@ -6,7 +6,7 @@ function doPost(e) {
         var data = JSON.parse(e.postData.contents);
 
         // 2. Configure Email
-        var recipient = "r-otake@t-carry.co.jp"; // テスト送信先
+        var recipient = "info@trs-hp.com"; // 送信先
         var subject = "【HPより問い合わせ】" + data.name + "様";
 
         var body = "";
